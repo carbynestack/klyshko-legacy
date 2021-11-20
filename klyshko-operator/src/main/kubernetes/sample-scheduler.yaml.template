@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2021 - for information on the respective copyright owner
+# see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+apiVersion: klyshko.carbynestack.io/v1alpha1
+kind: Scheduler
+metadata:
+  name: test
+spec:
+  master: ROLE
+  parallelism: 1
+  lowerThreshold: 100000
+  upperThreshold: 1000000
+  etcdEndpoint: 172.18.1.129
