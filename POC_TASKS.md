@@ -2,6 +2,12 @@
 
 ## Open
 
+- Build MP-SPDZ fake generator
+
+- Implement sidecar with tuple upload
+
+- Activate tuples in scheduler
+
 - Startup behavior
   - Traverse etcd when starting up to avoid missed jobs when slave is started after master
   - If master: delete all preexisting etcd entries
@@ -17,17 +23,15 @@
 
 - Convert to multi-module project (operator, sidecar)
 
-- Build MP-SPDZ fake generator
-
-- Implement sidecar with tuple upload
-
-- Activate tuples in scheduler
-
 - Transition to distributed etcd cluster
 
 - Graceful shutdown
   - Make sure that all launched jobs are deleted when scheduler is deleted
   - Delete all metadata in etcd
+
+- Fulfil OSS obligations
+
+- Add tests
 
 ## Done
 
