@@ -1,0 +1,39 @@
+#
+# Copyright (c) 2021 - for information on the respective copyright owner
+# see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+FROM ubuntu:20.04
+
+ARG MP_SPDZ_VERSION="v0.2.8"
+
+# Install prerequisites
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    automake \
+    build-essential \
+    git \
+    libboost-dev \
+    libboost-thread-dev \
+    libntl-dev \
+    libsodium-dev \
+    libssl-dev \
+    libtool \
+    m4 \
+    python3 \
+    texinfo \
+    yasm \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Checkout MP-SPDZ repository at required version
+RUN git clone --recurse-submodules https://github.com/data61/MP-SPDZ mp-spdz-${MP_SPDZ_VERSION}
+WORKDIR mp-spdz-${MP_SPDZ_VERSION}
+RUN git checkout ${MP_SPDZ_VERSION}
+
+# Build fake offline phase executable
+RUN echo "MY_CFLAGS += -DINSECURE" >> CONFIG.mine
+RUN make -j 8 tldr
+RUN make -j 8 Fake-Offline.x
