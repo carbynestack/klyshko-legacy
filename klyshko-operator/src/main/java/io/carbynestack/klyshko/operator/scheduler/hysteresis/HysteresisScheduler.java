@@ -21,6 +21,7 @@ import io.quarkus.logging.Log;
 import java.io.Closeable;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.*;
@@ -47,7 +48,7 @@ import static io.carbynestack.klyshko.operator.KlyshkoOperator.ETCD_PREFIX;
  */
 public class HysteresisScheduler implements Closeable, io.etcd.jetcd.Watch.Listener {
 
-    private static final int NUMBER_OF_PARTIES = 2; // TODO Read from VC configuration as soon as available
+    static final int NUMBER_OF_PARTIES = 2; // TODO Read from VC configuration as soon as available
 
     private enum State {
         IDLE, GENERATING
@@ -146,8 +147,10 @@ public class HysteresisScheduler implements Closeable, io.etcd.jetcd.Watch.Liste
                             spec.parallelism());
                     return;
                 }
-                Arrays.stream(TupleType.values())
-                        .skip(ThreadLocalRandom.current().nextLong(TupleType.values().length))
+                var generating =
+                        states.entrySet().stream().filter(e -> State.GENERATING.equals(e.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
+                generating.stream()
+                        .skip(ThreadLocalRandom.current().nextLong(generating.size()))
                         .findFirst()
                         .ifPresent(t -> {
                                     var jobId = UUID.randomUUID();

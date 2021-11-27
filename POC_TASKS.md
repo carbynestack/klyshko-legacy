@@ -2,11 +2,24 @@
 
 ## Open
 
-- Provide integration code for MP-SPDZ fake offline generator
+- Migrate from job to plain multi-container pod
 
-- Implement sidecar with tuple upload
+- Handle failures
+  - Activate only when all pods terminate w/o error
 
-- Activate tuples in scheduler
+- Move "kill logic" into JobManager
+
+- Read config material from ConfigMap (MAC keys, primes, etc.)
+
+- Document "Klyshko Integration Interface"
+
+- Expose state (Generating, Idle) as scheduler state
+
+- Implement logic to pickup resource updates to schedulers
+
+- Check for maximum chunk size and split accordingly when uploading
+
+- Prioritize depending on available tuples (least tuples first)
 
 - Fulfill OSS obligations
 
@@ -69,3 +82,9 @@
     - Keys as types (JobKey, PartyKey, etc.)
 
 - Build MP-SPDZ fake generator
+
+- Provide integration code for MP-SPDZ fake offline generator
+
+- Implement "sidecar" with tuple upload
+
+- Activate tuples in scheduler

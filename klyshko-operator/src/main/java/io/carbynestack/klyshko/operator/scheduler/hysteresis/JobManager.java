@@ -6,11 +6,16 @@
  */
 package io.carbynestack.klyshko.operator.scheduler.hysteresis;
 
+import io.carbynestack.castor.client.upload.CastorUploadClient;
+import io.carbynestack.castor.client.upload.DefaultCastorUploadClient;
 import io.carbynestack.klyshko.operator.scheduler.Scheduler;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchResponse;
+import io.fabric8.kubernetes.api.model.EnvVarBuilder;
+import io.fabric8.kubernetes.api.model.VolumeBuilder;
+import io.fabric8.kubernetes.api.model.VolumeMountBuilder;
 import io.fabric8.kubernetes.api.model.batch.v1.Job;
 import io.fabric8.kubernetes.api.model.batch.v1.JobBuilder;
 import io.fabric8.kubernetes.client.KubernetesClient;
@@ -30,7 +35,8 @@ import java.util.stream.Collectors;
  * Manages K8s jobs according to job roster state.
  * <p>
  * Watches etcd for creation of job roster entries and creates the corresponding local tuple generation job as a
- * K8s job. When a job roster is deleted from etcd the associated local K8s job gets deleted.
+ * K8s job. When a job roster is deleted from etcd the associated local K8s job gets deleted. In case tuples have been
+ * successfully created by all VCPs, the respective tuple chunk is activated.
  * <p>
  * The etcd job roster state is updated based on the VCP-local K8s job state.
  */
@@ -79,7 +85,10 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
                         var jobParams = new JobParameters(kv.getValue());
                         createJob(k, jobParams);
                     }
-                    case DELETE -> deleteJob(k);
+                    case DELETE -> {
+                        activateTuples(k.jobId()); // TODO Only activate in case of success
+                        deleteJob(k);
+                    }
                     case UNRECOGNIZED -> Log.warn("Unrecognized watch event type encountered");
                 }
             });
@@ -100,7 +109,7 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
     void createJob(JobRosterKey key, JobParameters params) {
         var job = k8sClient.batch().v1().jobs().create(new JobBuilder()
                 .withNewMetadata()
-                .withName("test-" + key.jobId()) // TODO: derive name from job
+                .withName("klyshko-crg-" + key.jobId())
                 .withLabels(Map.of(
                         "klyshko.carbynestack.io/jobId", key.jobId().toString(),
                         "klyshko.carbynestack.io/type", params.tupleType().toString()))
@@ -108,12 +117,51 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
                 .withNewSpec()
                 .withNewTemplate()
                 .withNewSpec()
-                .addNewContainer() // TODO: add sidecar container to upload generated cr (see https://banzaicloud.com/blog/k8s-sidecars/#example)
-                .withName("generator")
-                .withImage("bash") // TODO: Get from CRD
-                .withCommand("bash", "-c", "sleep 10") // TODO: Remove
-                .endContainer()
+                .withShareProcessNamespace(true)
                 .withRestartPolicy("Never")
+                .addNewContainer()
+                .withName("generator")
+                .withImage("carbynestack/klyshko-mp-spdz:1.0.0-SNAPSHOT") // TODO: Get from CRD
+                .withEnv(
+                        new EnvVarBuilder()
+                                .withName("KII_JOB_ID")
+                                .withValue(key.jobId().toString())
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_PLAYER_COUNT")
+                                .withValue(Integer.toString(HysteresisScheduler.NUMBER_OF_PARTIES))
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_TUPLE_TYPE")
+                                .withValue(params.tupleType().toString())
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_TUPLES_PER_JOB")
+                                .withValue(Integer.toString(scheduler.getSpec().tuplesPerJob()))
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_PLAYER_NUMBER")
+                                .withValue(scheduler.getSpec().master() ? "0" : "1")
+                                .build()
+                )
+                .withVolumeMounts(new VolumeMountBuilder().withName("kii").withMountPath("/kii").build())
+                .endContainer()
+                .addNewContainer()
+                .withName("provisioner")
+                .withImage("carbynestack/klyshko-provisioner:1.0.0-SNAPSHOT")
+                .withEnv(
+                        new EnvVarBuilder()
+                                .withName("KII_JOB_ID")
+                                .withValue(key.jobId().toString())
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_TUPLE_TYPE")
+                                .withValue(params.tupleType().toString())
+                                .build()
+                )
+                .withVolumeMounts(new VolumeMountBuilder().withName("kii").withMountPath("/kii").build())
+                .endContainer()
+                .withVolumes(new VolumeBuilder().withName("kii").withNewEmptyDir().and().build())
                 .endSpec()
                 .endTemplate()
                 .withBackoffLimit(0)
@@ -164,6 +212,33 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
 
     @Override
     public void onClose(WatcherException e) {
+    }
+
+    void activateTuples(UUID jobId) {
+        getCastorUploadClient().ifPresentOrElse(c -> {
+            try {
+                c.activateTupleChunk(jobId);
+                Log.infof("Tuples with chunk identifier '%s' successfully activated", jobId);
+            } catch (Exception e) {
+                Log.errorf(e, "Activation failed for tuple chunk with identifier '%s'", jobId);
+            }
+        }, () -> Log.warnf("Skipping tuple chunk activation for job with id '%s' due to unavailable Castor service",
+                jobId));
+    }
+
+    // TODO: Dedup (see provisioner)
+    Optional<CastorUploadClient> getCastorUploadClient() {
+        var castorService = k8sClient.services().withName("cs-castor"); // TODO Make service name configurable
+        if (!castorService.isReady()) {
+            Log.warn("Castor service not available");
+            return Optional.empty();
+        }
+        var castorSpec = castorService.get().getSpec();
+        String castorEndpoint = String.format("http://%s:%d",
+                castorSpec.getClusterIP(),
+                castorSpec.getPorts().get(0).getPort()); // TODO Handle case when port is not given (possible?)
+        Log.infof("Castor service discovered at endpoint %s", castorEndpoint);
+        return Optional.of(DefaultCastorUploadClient.builder(castorEndpoint).withoutSslCertificateValidation().build());
     }
 
 }

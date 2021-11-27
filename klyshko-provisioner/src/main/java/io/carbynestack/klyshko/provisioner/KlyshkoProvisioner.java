@@ -10,6 +10,8 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
+import javax.inject.Inject;
+
 @QuarkusMain
 public class KlyshkoProvisioner implements QuarkusApplication {
 
@@ -17,9 +19,13 @@ public class KlyshkoProvisioner implements QuarkusApplication {
         Quarkus.run(KlyshkoProvisioner.class, args);
     }
 
+    @Inject
+    TupleUploader tupleUploader;
+
     @Override
     public int run(String... args) {
         Quarkus.waitForExit();
         return 0;
     }
+
 }

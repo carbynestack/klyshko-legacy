@@ -30,17 +30,17 @@ echo -e "${GREEN}Loading docker images into cluster registries${NC}"
 for c in "${CLUSTERS[@]}"
 do
    echo -e "${GREEN}Loading docker image into $c${NC}"
-   kind load docker-image shu3si/klyshko-operator:1.0.0-SNAPSHOT --name "$c"
+   kind load docker-image carbynestack/klyshko-operator:1.0.0-SNAPSHOT --name "$c"
 done
 
 for c in "${CLUSTERS[@]}"
 do
   echo -e "${GREEN}Deploying resource definitions in $c${NC}"
   kubectl config use-context "kind-$c"
+  kubectl apply -f target/kubernetes/schedulers.klyshko.carbynestack.io-v1.yml
   MASTER=$([ "$c" == "apollo" ] && echo "true" || echo "false")
   sed "s/ROLE/${MASTER}/" src/main/kubernetes/sample-scheduler.yaml.template > "target/kubernetes/$c-scheduler.yaml"
   kubectl apply -f src/main/kubernetes/cluster-rolebinding.yaml
-  kubectl apply -f target/kubernetes/schedulers.klyshko.carbynestack.io-v1.yml
   kubectl apply -f "target/kubernetes/$c-scheduler.yaml"
   kubectl apply -f target/kubernetes/kubernetes.yml
   sleep 10

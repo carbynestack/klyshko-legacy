@@ -11,5 +11,6 @@ public record SchedulerSpec(
         int parallelism,
         int lowerThreshold,
         int upperThreshold,
+        int tuplesPerJob,
         String etcdEndpoint) {
 }

@@ -83,6 +83,11 @@
       <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
     </dependency>
     <dependency>
+      <groupId>io.carbynestack</groupId>
+      <artifactId>castor-upload-java-client</artifactId>
+      <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
+    </dependency>
+    <dependency>
       <groupId>io.etcd</groupId>
       <artifactId>jetcd-core</artifactId>
       <version>0.5.11</version>
@@ -92,7 +97,6 @@
       <artifactId>lombok</artifactId>
       <version>1.18.22</version>
     </dependency>
-
   </dependencies>
   <build>
     <plugins>
