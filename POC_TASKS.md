@@ -2,6 +2,8 @@
 
 ## Open
 
+- Verify that generated tuples actually work
+
 - Migrate from job to plain multi-container pod
 
 - Handle failures
@@ -9,19 +11,11 @@
 
 - Move "kill logic" into JobManager
 
-- Provide helm chart and add to cs:cs
+- Implement secure offline phase
 
 - Document "Klyshko Integration Interface"
 
-- Expose state (Generating, Idle) as scheduler state
-
-- Implement logic to pickup resource updates to schedulers
-
-- Check for maximum chunk size and split accordingly when uploading
-
-- Prioritize depending on available tuples (least tuples first)
-
-- Fulfill OSS obligations
+- Limit tuple count to maximum chunk size
 
 - Startup behavior
   - Traverse etcd when starting up to avoid missed jobs when slave is started after master
@@ -29,22 +23,42 @@
 
 - Ensure proper shutdown when deleted
 
-- Refactorings
-  - Better name for job to disambiguate with K8s job
-  - Consistent (regarding level) and comprehensive logging
-  - Improve error handling and logging
-
-- Make actions idempotent?
-
-- Convert to multi-module project (operator, sidecar)
-
-- Transition to distributed etcd cluster
-
 - Graceful shutdown
   - Make sure that all launched jobs are deleted when scheduler is deleted
   - Delete all metadata in etcd
 
+- Refactorings
+  - Better name for job to disambiguate with K8s job
+  - Consistent (regarding level) and comprehensive logging
+  - Improve error handling and logging
+  
+- Convert to real multi-module project (operator, sidecar)
+
+- Transition to distributed etcd cluster
+
 - Add tests
+
+- Add Badges
+
+- Enable native build
+
+- Migrate to compliant images
+
+- Fulfill OSS obligations
+
+- Build on Github
+
+- Promote to non-PoC project
+
+- Provide helm chart and add to cs:cs
+
+- Prioritize depending on available tuples (least tuples first)
+
+- Expose state (Generating, Idle) as scheduler state
+
+- Implement logic to pickup resource updates to schedulers
+
+- Make actions idempotent?
 
 ## Done
 
