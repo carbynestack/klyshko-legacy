@@ -1,0 +1,15 @@
+#
+# Copyright (c) 2021 - for information on the respective copyright owner
+# see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: io.carbynestack.engine.params.extra
+data:
+  mac_key_share_p: |
+    MAC_KEY_SHARE_P
+  mac_key_share_2: |
+    MAC_KEY_SHARE_2

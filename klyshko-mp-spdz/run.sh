@@ -6,6 +6,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Fail, if any command fails
+set -e
+
+# Setup offline executable command line arguments dictionary
 n=${KII_TUPLES_PER_JOB}
 pn=${KII_PLAYER_NUMBER}
 declare -A argsByType=(
@@ -33,15 +37,44 @@ declare -A folderByType=(
   ["multiplicationtriple_gf2n"]="2-2-128/Triples-2-P${pn}"
 )
 
-cmd="./Fake-Offline.x -d 0 --prngseed ${KII_JOB_ID} ${argsByType[${KII_TUPLE_TYPE}]} ${KII_PLAYER_COUNT}"
+# Provide required parameters in MP-SPDZ "Player-Data" folder
+prime=$(cat /etc/kii/params/prime)
+declare fields=("p" "2")
+for f in "${fields[@]}"
+do
+
+	folder="Player-Data/${KII_PLAYER_COUNT}-${f}-128"
+	mkdir -p "${folder}"
+  echo "Providing parameters for field ${f}-128 in folder ${folder}"
+
+  # Write MAC key shares
+  for pn in $(seq 0 $((KII_PLAYER_COUNT-1)))
+  do
+    macKeyShareFile="${folder}/Player-MAC-Keys-${f}-P${pn}"
+    if [[ ${pn} -eq ${KII_PLAYER_NUMBER} ]]; then
+      src="/etc/kii/secret-params"
+    else
+      src="/etc/kii/extra-params"
+    fi
+    macKeyShare=$(cat "${src}/mac_key_share_${f}")
+    echo "${KII_PLAYER_COUNT} ${macKeyShare}" > "${macKeyShareFile}"
+    echo "MAC key share for player ${pn} written to ${macKeyShareFile}"
+  done
+
+done
+
+# Execute offline phase
+cmd="./Fake-Offline.x -d 0 --prime ${prime} --prngseed ${KII_JOB_ID} ${argsByType[${KII_TUPLE_TYPE}]} ${KII_PLAYER_COUNT}"
 eval "$cmd"
+
+# Copy generated tuples to path expected by KII
 cp "Player-Data/${folderByType[${KII_TUPLE_TYPE}]}" "/kii/tuples"
 
 # TODO: Move this into scheduler
 # The following will become obsolete as soon as sidecar KEP has been implemented.
 # Wait until the provisioner process has started, to be able to send signal.
 sleep 10
-until pids=$(pidof java)
+until pidof java
 do
     sleep 0.5
 done

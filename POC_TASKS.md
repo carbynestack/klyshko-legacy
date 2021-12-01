@@ -9,7 +9,7 @@
 
 - Move "kill logic" into JobManager
 
-- Read config material from ConfigMap (MAC keys, primes, etc.)
+- Provide helm chart and add to cs:cs
 
 - Document "Klyshko Integration Interface"
 
@@ -88,3 +88,5 @@
 - Implement "sidecar" with tuple upload
 
 - Activate tuples in scheduler
+
+- Read config material from ConfigMap (MAC keys, primes, etc.)

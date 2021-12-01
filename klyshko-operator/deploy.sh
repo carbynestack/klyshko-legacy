@@ -38,10 +38,19 @@ do
   echo -e "${GREEN}Deploying resource definitions in $c${NC}"
   kubectl config use-context "kind-$c"
   kubectl apply -f target/kubernetes/schedulers.klyshko.carbynestack.io-v1.yml
+  MAC_KEY_SHARE_P=$([ "$c" == "apollo" ] && echo "-88222337191559387830816715872691188861" | base64 || echo "1113507028231509545156335486838233835" | base64)
+  MAC_KEY_SHARE_2=$([ "$c" == "apollo" ] && echo "f0cf6099e629fd0bda2de3f9515ab72b" | base64 || echo "c347ce3d9e165e4e85221f9da7591d98" | base64)
+  sed -e "s/MAC_KEY_SHARE_P/${MAC_KEY_SHARE_P}/" -e "s/MAC_KEY_SHARE_2/${MAC_KEY_SHARE_2}/" src/main/kubernetes/engine-params-secret.yaml.template > "target/kubernetes/$c-engine-params-secret.yaml"
+  EXTRA_MAC_KEY_SHARE_P=$([ "$c" == "starbuck" ] && echo "-88222337191559387830816715872691188861" || echo "1113507028231509545156335486838233835")
+  EXTRA_MAC_KEY_SHARE_2=$([ "$c" == "starbuck" ] && echo "f0cf6099e629fd0bda2de3f9515ab72b" || echo "c347ce3d9e165e4e85221f9da7591d98")
+  sed -e "s/MAC_KEY_SHARE_P/${EXTRA_MAC_KEY_SHARE_P}/" -e "s/MAC_KEY_SHARE_2/${EXTRA_MAC_KEY_SHARE_2}/" src/main/kubernetes/engine-params-extra.yaml.template > "target/kubernetes/$c-engine-params-extra.yaml"
   MASTER=$([ "$c" == "apollo" ] && echo "true" || echo "false")
-  sed "s/ROLE/${MASTER}/" src/main/kubernetes/sample-scheduler.yaml.template > "target/kubernetes/$c-scheduler.yaml"
+  sed -e "s/ROLE/${MASTER}/" src/main/kubernetes/sample-scheduler.yaml.template > "target/kubernetes/$c-scheduler.yaml"
   kubectl apply -f src/main/kubernetes/cluster-rolebinding.yaml
-  kubectl apply -f "target/kubernetes/$c-scheduler.yaml"
+  kubectl apply -f target/kubernetes/$c-engine-params-secret.yaml
+  kubectl apply -f target/kubernetes/$c-engine-params-extra.yaml
+  kubectl apply -f src/main/kubernetes/engine-params.yaml
   kubectl apply -f target/kubernetes/kubernetes.yml
+  kubectl apply -f "target/kubernetes/$c-scheduler.yaml"
   sleep 10
 done

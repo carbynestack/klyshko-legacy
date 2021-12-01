@@ -13,9 +13,7 @@ import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
 import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchResponse;
-import io.fabric8.kubernetes.api.model.EnvVarBuilder;
-import io.fabric8.kubernetes.api.model.VolumeBuilder;
-import io.fabric8.kubernetes.api.model.VolumeMountBuilder;
+import io.fabric8.kubernetes.api.model.*;
 import io.fabric8.kubernetes.api.model.batch.v1.Job;
 import io.fabric8.kubernetes.api.model.batch.v1.JobBuilder;
 import io.fabric8.kubernetes.client.KubernetesClient;
@@ -142,9 +140,27 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
                         new EnvVarBuilder()
                                 .withName("KII_PLAYER_NUMBER")
                                 .withValue(scheduler.getSpec().master() ? "0" : "1")
-                                .build()
-                )
-                .withVolumeMounts(new VolumeMountBuilder().withName("kii").withMountPath("/kii").build())
+                                .build())
+                .withVolumeMounts(
+                        new VolumeMountBuilder()
+                                .withName("kii")
+                                .withMountPath("/kii")
+                                .build(),
+                        new VolumeMountBuilder()
+                                .withName("params")
+                                .withMountPath("/etc/kii/params")
+                                .withReadOnly(true)
+                                .build(),
+                        new VolumeMountBuilder()
+                                .withName("secret-params")
+                                .withMountPath("/etc/kii/secret-params")
+                                .withReadOnly(true)
+                                .build(),
+                        new VolumeMountBuilder()
+                                .withName("extra-params")
+                                .withMountPath("/etc/kii/extra-params")
+                                .withReadOnly(true)
+                                .build())
                 .endContainer()
                 .addNewContainer()
                 .withName("provisioner")
@@ -157,11 +173,40 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
                         new EnvVarBuilder()
                                 .withName("KII_TUPLE_TYPE")
                                 .withValue(params.tupleType().toString())
-                                .build()
-                )
-                .withVolumeMounts(new VolumeMountBuilder().withName("kii").withMountPath("/kii").build())
+                                .build())
+                .withVolumeMounts(
+                        new VolumeMountBuilder()
+                                .withName("kii")
+                                .withMountPath("/kii")
+                                .build())
                 .endContainer()
-                .withVolumes(new VolumeBuilder().withName("kii").withNewEmptyDir().and().build())
+                .withVolumes(
+                        new VolumeBuilder()
+                                .withName("kii")
+                                .withNewEmptyDir()
+                                .and()
+                                .build(),
+                        new VolumeBuilder()
+                                .withName("params")
+                                .withConfigMap(
+                                        new ConfigMapVolumeSourceBuilder()
+                                                .withName("io.carbynestack.engine.params")
+                                                .build())
+                                .build(),
+                        new VolumeBuilder()
+                                .withName("secret-params")
+                                .withSecret(
+                                        new SecretVolumeSourceBuilder()
+                                                .withSecretName("io.carbynestack.engine.params.secret")
+                                                .build())
+                                .build(),
+                        new VolumeBuilder()
+                                .withName("extra-params")
+                                .withConfigMap(
+                                        new ConfigMapVolumeSourceBuilder()
+                                                .withName("io.carbynestack.engine.params.extra")
+                                                .build())
+                                .build())
                 .endSpec()
                 .endTemplate()
                 .withBackoffLimit(0)
