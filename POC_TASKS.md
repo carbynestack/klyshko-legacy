@@ -2,8 +2,6 @@
 
 ## Open
 
-- Move "kill logic" into JobManager
-
 - Implement secure offline phase
 
 - Document "Klyshko Integration Interface"
@@ -104,3 +102,5 @@
 
 - Handle failures
   - Activate only when all pods terminate w/o error
+
+- Move "kill logic" into JobManager

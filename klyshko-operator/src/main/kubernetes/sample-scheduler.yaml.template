@@ -11,7 +11,7 @@ metadata:
 spec:
   master: ROLE
   parallelism: 1
-  lowerThreshold: 100000
-  upperThreshold: 200000
+  lowerThreshold: 1000000
+  upperThreshold: 2000000
   tuplesPerJob: 10000
   etcdEndpoint: 172.18.1.129

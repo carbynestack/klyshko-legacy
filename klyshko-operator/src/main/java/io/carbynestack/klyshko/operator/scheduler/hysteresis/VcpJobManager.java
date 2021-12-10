@@ -24,7 +24,8 @@ import io.fabric8.kubernetes.client.Watch;
 import io.fabric8.kubernetes.client.Watcher;
 import io.fabric8.kubernetes.client.WatcherException;
 import io.quarkus.logging.Log;
-import org.jboss.logging.Logger;
+import io.vavr.control.Try;
+import org.apache.commons.io.IOUtils;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -91,7 +92,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                             // Roster for VC job created, launch local VCP job
                             JobData jobData = objectMapper.readValue(kv.getValue().getBytes(), JobData.class);
                             if (jobData.jobState() == JobState.CREATED) {
-                                createJob(k, jobData.jobParameters());
+                                createVcpLocalJob(k, jobData.jobParameters());
                             }
                         }
                         case DELETE -> {
@@ -127,10 +128,21 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                 scheduler.getMetadata().getName());
     }
 
-    void createJob(JobRosterKey key, JobParameters params) {
+    void createVcpLocalJob(JobRosterKey key, JobParameters params) {
         Log.debugf("Creating VCP-local job for VC job with ID '%s' using parameters: %s", key.jobId(), params);
+        Try
+                .of(() -> IOUtils.resourceToString("/kii-launch-script.sh", StandardCharsets.UTF_8))
+                .onSuccess(kiiLaunchScript -> {
+                    var job = k8sClient.pods().create(buildVcpLocalJobPod(key, params, kiiLaunchScript));
+                    Log.infof("VCP-local job with name %s created for VC job %s", job.getMetadata().getName(),
+                            key.jobId());
+                })
+                .onFailure(e -> Log.errorf(e, "Failed to launch VCP-local job for VC job with ID %s", key.jobId()));
+    }
+
+    private Pod buildVcpLocalJobPod(JobRosterKey key, JobParameters params, String kiiLaunchScript) {
         var kiiSharedFolderPath = "/kii";
-        var job = k8sClient.pods().create(new PodBuilder()
+        return new PodBuilder()
                 .withNewMetadata()
                 .withName("klyshko-crg-" + key.jobId())
                 .withLabels(Map.of(
@@ -190,7 +202,8 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                                 .withMountPath("/etc/kii/extra-params")
                                 .withReadOnly(true)
                                 .build())
-
+                .withCommand("/bin/bash", "-c")
+                .withArgs(kiiLaunchScript)
                 .endContainer()
                 .addNewContainer()
                 .withName("provisioner")
@@ -242,9 +255,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                                                 .build())
                                 .build())
                 .endSpec()
-                .build()
-        );
-        Log.infof("Job with name %s created for key %s", job.getMetadata().getName(), key);
+                .build();
     }
 
     void deleteJob(JobRosterKey key) {
@@ -291,9 +302,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                     .If(new Cmp(kbs, Cmp.Op.NOT_EQUAL, CmpTarget.value(sbs)))
                     .Then(Op.put(kbs, sbs, PutOption.DEFAULT))
                     .commit()
-                    .thenAccept(r -> {
-                        Log.infof("Updated roster entry for key %s to %s", jreKey, s);
-                    });
+                    .thenAccept(r -> Log.infof("Updated roster entry for key %s to %s", jreKey, s));
         });
     }
 

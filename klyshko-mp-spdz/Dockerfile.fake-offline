@@ -42,7 +42,4 @@ RUN make -j 8 tldr
 RUN make -j 8 Fake-Offline.x
 
 # Copy resources
-COPY run.sh .
-
-# Start tuple generation
-CMD ["./run.sh"]
+COPY kii-run.sh .
