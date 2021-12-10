@@ -70,12 +70,18 @@ eval "$cmd"
 # Copy generated tuples to path expected by KII
 cp "Player-Data/${folderByType[${KII_TUPLE_TYPE}]}" "/kii/tuples"
 
-# TODO: Move this into scheduler
+# TODO: Move the following into scheduler (KII shared folder?)
 # The following will become obsolete as soon as sidecar KEP has been implemented.
+
 # Wait until the provisioner process has started, to be able to send signal.
-sleep 10
+sleep 10 # TODO Is this needed, why?
 until pidof java
 do
     sleep 0.5
 done
-pkill -SIGTERM java
+sleep 10
+
+# Send SIGTERM to provisioner
+provisioner_pid=$(cat "${KII_SHARED_FOLDER}/provisioner.pid")
+echo "Sending SIGTERM to provisioner (PID: ${provisioner_pid})"
+kill -SIGTERM "${provisioner_pid}"

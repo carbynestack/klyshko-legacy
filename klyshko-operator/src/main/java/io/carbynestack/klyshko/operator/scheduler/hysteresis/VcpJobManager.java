@@ -24,6 +24,7 @@ import io.fabric8.kubernetes.client.Watch;
 import io.fabric8.kubernetes.client.Watcher;
 import io.fabric8.kubernetes.client.WatcherException;
 import io.quarkus.logging.Log;
+import org.jboss.logging.Logger;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -87,18 +88,11 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                 try {
                     switch (event.getEventType()) {
                         case PUT -> {
-                            if (!event.getPrevKV().getValue().isEmpty()) {
-                                Log.debugf("Skipping event for key %s - roster update", key);
-                                break;
-                            }
-                            // Roster for VC job created, create roster entry and launch local VCP job
+                            // Roster for VC job created, launch local VCP job
                             JobData jobData = objectMapper.readValue(kv.getValue().getBytes(), JobData.class);
-                            JobRosterEntryKey jreKey = new JobRosterEntryKey(k.jobId(), scheduler.getSpec().master()
-                                    ? 0 : 1);
-                            etcdClient.getKVClient().put(jreKey.toEtcdKey(),
-                                    ByteSequence.from(JobState.CREATED.toString(), StandardCharsets.UTF_8)).thenRun(() -> {
+                            if (jobData.jobState() == JobState.CREATED) {
                                 createJob(k, jobData.jobParameters());
-                            });
+                            }
                         }
                         case DELETE -> {
                             /*
@@ -111,7 +105,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                             if (jobData.jobState() == JobState.SUCCEEDED) {
                                 activateTuples(k.jobId());
                             }
-                            deleteJob(k);
+                            //deleteJob(k);
                         }
                         case UNRECOGNIZED -> Log.warn("Unrecognized watch event type encountered");
                     }
@@ -134,6 +128,8 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
     }
 
     void createJob(JobRosterKey key, JobParameters params) {
+        Log.debugf("Creating VCP-local job for VC job with ID '%s' using parameters: %s", key.jobId(), params);
+        var kiiSharedFolderPath = "/kii";
         var job = k8sClient.pods().create(new PodBuilder()
                 .withNewMetadata()
                 .withName("klyshko-crg-" + key.jobId())
@@ -169,11 +165,15 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                         new EnvVarBuilder()
                                 .withName("KII_PLAYER_NUMBER")
                                 .withValue(scheduler.getSpec().master() ? "0" : "1")
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_SHARED_FOLDER")
+                                .withValue(kiiSharedFolderPath)
                                 .build())
                 .withVolumeMounts(
                         new VolumeMountBuilder()
                                 .withName("kii")
-                                .withMountPath("/kii")
+                                .withMountPath(kiiSharedFolderPath)
                                 .build(),
                         new VolumeMountBuilder()
                                 .withName("params")
@@ -190,6 +190,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                                 .withMountPath("/etc/kii/extra-params")
                                 .withReadOnly(true)
                                 .build())
+
                 .endContainer()
                 .addNewContainer()
                 .withName("provisioner")
@@ -202,6 +203,10 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                         new EnvVarBuilder()
                                 .withName("KII_TUPLE_TYPE")
                                 .withValue(params.tupleType().toString())
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_SHARED_FOLDER")
+                                .withValue("/kii")
                                 .build())
                 .withVolumeMounts(
                         new VolumeMountBuilder()
@@ -277,18 +282,17 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
         // TODO Use configured player number
         JobRosterEntryKey jreKey = new JobRosterEntryKey(key.jobId(), scheduler.getSpec().master() ? 0 : 1);
         toVcpJobState(pod.getStatus()).ifPresent(s -> {
+            Log.debugf("Pod state '%s' mapped to job state '%s'", pod.getStatus().getPhase(), s);
             var kbs = jreKey.toEtcdKey();
             var sbs = ByteSequence.from(s.toString(), StandardCharsets.UTF_8);
-            // Update roster entry value if and only if state has changed
+            // Update roster entry value iff state has changed
             etcdClient.getKVClient()
                     .txn()
                     .If(new Cmp(kbs, Cmp.Op.NOT_EQUAL, CmpTarget.value(sbs)))
                     .Then(Op.put(kbs, sbs, PutOption.DEFAULT))
                     .commit()
                     .thenAccept(r -> {
-                        if (!r.getPutResponses().isEmpty()) {
-                            Log.infof("Updated roster entry for key %s to %s", jreKey, s);
-                        }
+                        Log.infof("Updated roster entry for key %s to %s", jreKey, s);
                     });
         });
     }

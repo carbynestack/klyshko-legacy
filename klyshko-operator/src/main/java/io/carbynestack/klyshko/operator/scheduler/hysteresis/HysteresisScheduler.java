@@ -12,18 +12,24 @@ import io.carbynestack.castor.client.download.DefaultCastorIntraVcpClient;
 import io.carbynestack.castor.common.entities.TupleType;
 import io.carbynestack.klyshko.operator.scheduler.Scheduler;
 import io.etcd.jetcd.*;
+import io.etcd.jetcd.op.Cmp;
+import io.etcd.jetcd.op.CmpTarget;
+import io.etcd.jetcd.op.Op;
 import io.etcd.jetcd.options.DeleteOption;
 import io.etcd.jetcd.options.GetOption;
+import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchResponse;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.quarkus.logging.Log;
+import org.jboss.logging.Logger;
 
 import java.io.Closeable;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static io.carbynestack.klyshko.operator.KlyshkoOperator.ETCD_PREFIX;
 import static io.carbynestack.klyshko.operator.scheduler.hysteresis.VcpJobManager.JobState;
@@ -162,11 +168,25 @@ public class HysteresisScheduler implements Closeable, io.etcd.jetcd.Watch.Liste
                             .ifPresent(throwingConsumer(t -> {
                                 var rosterKey = new JobRosterKey(UUID.randomUUID());
                                 var jobData = new JobData(new JobParameters(t), JobState.CREATED);
-                                kv.put(rosterKey.toEtcdKey(),
-                                                ByteSequence.from(objectMapper.writeValueAsBytes(jobData)))
-                                        .thenRun(() -> Log.infof(
-                                                "Roster created for job with tuple type %s and ID %s",
-                                                t, rosterKey.jobId()));
+                                var rosterKeyEntryOps = IntStream.range(0, NUMBER_OF_PARTIES)
+                                        .mapToObj(p -> Op.put(
+                                                rosterKey.getJobRosterEntryKey(p).toEtcdKey(),
+                                                ByteSequence.from(JobState.CREATED.toString(), StandardCharsets.UTF_8),
+                                                PutOption.DEFAULT))
+                                        .toArray(Op[]::new);
+                                kv.txn()
+                                        .If(new Cmp(rosterKey.toEtcdKey(), Cmp.Op.GREATER, CmpTarget.version(0)))
+                                        .Else(Op.put(rosterKey.toEtcdKey(),
+                                                ByteSequence.from(objectMapper.writeValueAsBytes(jobData)),
+                                                PutOption.DEFAULT))
+                                        .Else(rosterKeyEntryOps)
+                                        .commit()
+                                        .thenAccept(r -> {
+                                            var level = r.isSucceeded() ? Logger.Level.INFO : Logger.Level.ERROR;
+                                            Log.logf(level,
+                                                    "Roster creation for job with tuple type %s and ID %s %s",
+                                                    t, rosterKey.jobId(), r.isSucceeded() ? "successful" : "failed");
+                                        });
                             }));
                 }
             }).join();
@@ -219,10 +239,10 @@ public class HysteresisScheduler implements Closeable, io.etcd.jetcd.Watch.Liste
                                                 .map(throwingFunction(v -> objectMapper.readValue(v.getValue().getBytes(), JobData.class)))),
                                 (newVcJobState, jobData) -> {
                                     jobData.ifPresent(throwingConsumer(jd -> {
-                                        JobData njd = new JobData(jd.jobParameters(), newVcJobState);
                                         if (jd.jobState() != newVcJobState) {
+                                            JobData njd = new JobData(jd.jobParameters(), newVcJobState);
                                             kvClient.put(rosterKey,
-                                                    ByteSequence.from(objectMapper.writeValueAsBytes(njd)));
+                                                    ByteSequence.from(objectMapper.writeValueAsBytes(njd))).join();
                                             Log.infof("Roster for job with ID %s updated to new VC job state %s", jobId,
                                                     newVcJobState);
                                         }
