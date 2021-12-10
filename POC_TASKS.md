@@ -4,8 +4,6 @@
 
 - Implement secure offline phase
 
-- Document "Klyshko Integration Interface"
-
 - Limit tuple count to maximum chunk size
 
 - Startup behavior
@@ -104,3 +102,5 @@
   - Activate only when all pods terminate w/o error
 
 - Move "kill logic" into JobManager
+
+- Document "Klyshko Integration Interface"
