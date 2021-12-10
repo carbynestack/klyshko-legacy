@@ -35,27 +35,28 @@ public class TupleUploader {
     @ConfigProperty(name = "kii.tuple-type")
     Optional<String> tupleType;
 
+    @ConfigProperty(name = "kii.tuple-file")
+    Optional<String> tupleFilePath;
+
     // TODO Handle failure cases
     @PreDestroy
-    public void destroy() throws InterruptedException {
+    public void destroy() {
         Log.info("Shutdown sequence initiated");
-        jobId.ifPresentOrElse(jid -> {
-            tupleType.ifPresentOrElse(tt -> {
-                TupleType tupleType =
-                        Arrays.stream(TupleType.values()).filter(t -> t.toString().equals(tt)).findFirst().get(); //
-                // Improve handling
-                getCastorUploadClient().ifPresentOrElse(c -> {
-                    UUID chunkId = UUID.fromString(jid);
-                    try {
-                        uploadTuples(c, chunkId, tupleType);
-                        Log.infof("Tuples with chunk identifier '%s' successfully uploaded to Castor", chunkId);
-                    } catch (IOException ioe) {
-                        Log.errorf(ioe, "Upload failed for tuple chunk with identifier '%s'", chunkId);
-                    }
-                }, () -> Log.warnf("Skipping tuple chunk upload for job with id '%s' due to unavailable Castor service",
-                        jobId));
-            }, () -> Log.error("Tuple type must be supplied using environment variable 'KII_TUPLE_TYPE"));
-        }, () -> Log.error("Job identifier must be supplied using environment variable 'KII_JOB_ID"));
+        jobId.ifPresentOrElse(jid -> tupleType.ifPresentOrElse(tt -> {
+            TupleType tupleType =
+                    Arrays.stream(TupleType.values()).filter(t -> t.toString().equals(tt)).findFirst().get(); //
+            // Improve handling
+            getCastorUploadClient().ifPresentOrElse(c -> {
+                UUID chunkId = UUID.fromString(jid);
+                try {
+                    uploadTuples(c, chunkId, tupleType);
+                    Log.infof("Tuples with chunk identifier '%s' successfully uploaded to Castor", chunkId);
+                } catch (IOException ioe) {
+                    Log.errorf(ioe, "Upload failed for tuple chunk with identifier '%s'", chunkId);
+                }
+            }, () -> Log.warnf("Skipping tuple chunk upload for job with id '%s' due to unavailable Castor service",
+                    jobId));
+        }, () -> Log.error("Tuple type must be supplied using environment variable 'KII_TUPLE_TYPE")), () -> Log.error("Job identifier must be supplied using environment variable 'KII_JOB_ID"));
     }
 
     Optional<CastorUploadClient> getCastorUploadClient() {
@@ -78,7 +79,7 @@ public class TupleUploader {
     }
 
     void uploadTuples(CastorUploadClient castorUploadClient, UUID chunkId, TupleType tupleType) throws IOException {
-        File tupleFile = new File("/kii/tuples");
+        File tupleFile = new File(tupleFilePath.orElse("/kii/tuples"));
         try (FileInputStream fileInputStream = new FileInputStream(tupleFile)) {
             long headerLength = headerLength(fileInputStream);
             Log.infof("Tuple file contains %d bytes with %d byte header", tupleFile.length(), headerLength);

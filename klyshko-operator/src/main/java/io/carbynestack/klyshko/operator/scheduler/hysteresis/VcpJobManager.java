@@ -181,6 +181,10 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                         new EnvVarBuilder()
                                 .withName("KII_SHARED_FOLDER")
                                 .withValue(kiiSharedFolderPath)
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_TUPLE_FILE")
+                                .withValue("/kii/tuples")
                                 .build())
                 .withVolumeMounts(
                         new VolumeMountBuilder()
@@ -220,6 +224,10 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                         new EnvVarBuilder()
                                 .withName("KII_SHARED_FOLDER")
                                 .withValue("/kii")
+                                .build(),
+                        new EnvVarBuilder()
+                                .withName("KII_TUPLE_FILE")
+                                .withValue("/kii/tuples")
                                 .build())
                 .withVolumeMounts(
                         new VolumeMountBuilder()

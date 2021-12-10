@@ -68,4 +68,4 @@ cmd="./Fake-Offline.x -d 0 --prime ${prime} --prngseed ${KII_JOB_ID} ${argsByTyp
 eval "$cmd"
 
 # Copy generated tuples to path expected by KII
-cp "Player-Data/${folderByType[${KII_TUPLE_TYPE}]}" "/kii/tuples"
+cp "Player-Data/${folderByType[${KII_TUPLE_TYPE}]}" "${KII_TUPLE_FILE}"
