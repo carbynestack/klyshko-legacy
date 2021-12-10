@@ -6,6 +6,7 @@
  */
 package io.carbynestack.klyshko.operator.scheduler;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.carbynestack.klyshko.operator.scheduler.hysteresis.HysteresisScheduler;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
@@ -21,15 +22,17 @@ public class SchedulerController implements ResourceController<Scheduler> {
     public static final String KIND = "Scheduler";
 
     private final KubernetesClient kubernetesClient;
+    private final ObjectMapper objectMapper;
 
     private final ConcurrentMap<String, HysteresisScheduler> schedulers;
 
     public SchedulerController() {
-        this(new DefaultKubernetesClient());
+        this(new DefaultKubernetesClient(), new ObjectMapper());
     }
 
-    public SchedulerController(KubernetesClient kubernetesClient) {
+    public SchedulerController(KubernetesClient kubernetesClient, ObjectMapper objectMapper) {
         this.kubernetesClient = kubernetesClient;
+        this.objectMapper = objectMapper;
         schedulers = new ConcurrentHashMap<>();
     }
 
@@ -40,7 +43,7 @@ public class SchedulerController implements ResourceController<Scheduler> {
         boolean exists = schedulers.containsKey(name);
         if (!exists) {
             Log.infof("HysteresisScheduler created: %s", resource.getFullResourceName());
-            schedulers.put(resource.getFullResourceName(), new HysteresisScheduler(kubernetesClient, resource));
+            schedulers.put(resource.getFullResourceName(), new HysteresisScheduler(kubernetesClient, resource, objectMapper));
         } // TODO Implement update logic for existing scheduler
         return UpdateControl.noUpdate();
     }

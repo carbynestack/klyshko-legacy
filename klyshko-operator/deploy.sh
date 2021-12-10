@@ -16,8 +16,8 @@ do
    kubectl config use-context "kind-$c"
    echo -e "${GREEN}Deleting operator in $c${NC}"
    kubectl delete deployment klyshko-operator
-   echo -e "${GREEN}Deleting jobs in $c${NC}"
-   kubectl delete jobs --all
+   echo -e "${GREEN}Deleting job pods in $c${NC}"
+   kubectl delete pods -l "app.kubernetes.io/part-of=klyshko.carbynestack.io"
 done
 
 echo -e "${GREEN}Purging klyshko namespace in etcd${NC}"

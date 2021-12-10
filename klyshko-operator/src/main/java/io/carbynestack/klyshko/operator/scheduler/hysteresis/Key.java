@@ -41,6 +41,10 @@ public sealed interface Key permits JobRosterDirectoryKey, JobRosterKey, JobRost
         return ByteSequence.from(toString(), StandardCharsets.UTF_8);
     }
 
+    default Optional<ByteSequence> toEtcdPrefixKey() {
+        return toEtcdParentKey().map(pk -> pk.concat(ByteSequence.from("/", StandardCharsets.UTF_8)));
+    }
+
     Optional<ByteSequence> toEtcdParentKey();
 
 }

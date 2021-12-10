@@ -2,13 +2,6 @@
 
 ## Open
 
-- Verify that generated tuples actually work
-
-- Migrate from job to plain multi-container pod
-
-- Handle failures
-  - Activate only when all pods terminate w/o error
-
 - Move "kill logic" into JobManager
 
 - Implement secure offline phase
@@ -104,3 +97,10 @@
 - Activate tuples in scheduler
 
 - Read config material from ConfigMap (MAC keys, primes, etc.)
+
+- Verify that generated tuples actually work
+
+- Migrate from job to plain multi-container pod
+
+- Handle failures
+  - Activate only when all pods terminate w/o error

@@ -6,16 +6,19 @@
  */
 package io.carbynestack.klyshko.operator.scheduler.hysteresis;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.carbynestack.castor.client.upload.CastorUploadClient;
 import io.carbynestack.castor.client.upload.DefaultCastorUploadClient;
 import io.carbynestack.klyshko.operator.scheduler.Scheduler;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.Client;
+import io.etcd.jetcd.op.Cmp;
+import io.etcd.jetcd.op.CmpTarget;
+import io.etcd.jetcd.op.Op;
+import io.etcd.jetcd.options.PutOption;
 import io.etcd.jetcd.options.WatchOption;
 import io.etcd.jetcd.watch.WatchResponse;
 import io.fabric8.kubernetes.api.model.*;
-import io.fabric8.kubernetes.api.model.batch.v1.Job;
-import io.fabric8.kubernetes.api.model.batch.v1.JobBuilder;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.Watch;
 import io.fabric8.kubernetes.client.Watcher;
@@ -23,6 +26,7 @@ import io.fabric8.kubernetes.client.WatcherException;
 import io.quarkus.logging.Log;
 
 import java.io.Closeable;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Optional;
@@ -38,82 +42,107 @@ import java.util.stream.Collectors;
  * <p>
  * The etcd job roster state is updated based on the VCP-local K8s job state.
  */
-class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeable {
+class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Closeable {
 
     enum JobState {
-        RUNNING, COMPLETED
+        CREATED, PENDING, RUNNING, FAILED, SUCCEEDED
     }
 
     private final KubernetesClient k8sClient;
     private final Client etcdClient;
     private final Scheduler scheduler;
+    private final ObjectMapper objectMapper;
     private final Watch jobsWatch;
     private final io.etcd.jetcd.Watch.Watcher jobWatcher;
 
-    JobManager(KubernetesClient k8sClient, Client etcdClient, Scheduler scheduler) {
+    VcpJobManager(KubernetesClient k8sClient, Client etcdClient, Scheduler scheduler, ObjectMapper objectMapper) {
         this.k8sClient = k8sClient;
         this.etcdClient = etcdClient;
         this.scheduler = scheduler;
-        jobsWatch = k8sClient.batch().v1().jobs().watch(this);
+        this.objectMapper = objectMapper;
+        jobsWatch = k8sClient.pods().watch(this);
         jobWatcher = etcdClient.getWatchClient().watch(JobRosterDirectoryKey.INSTANCE.toEtcdKey(),
-                WatchOption.newBuilder().isPrefix(true).build(), this);
-        Log.infof("Job manager created for scheduler %s", scheduler.getFullResourceName());
+                WatchOption.newBuilder().isPrefix(true).withPrevKV(true).build(), this);
+        Log.infof("Job manager created for scheduler %s", scheduler.getMetadata().getName());
     }
 
     @Override
     public void close() {
         jobWatcher.close();
         jobsWatch.close();
-        Log.infof("Job manager disposed for scheduler %s", scheduler.getFullResourceName());
+        Log.infof("Job manager disposed for scheduler %s", scheduler.getMetadata().getName());
     }
 
     @Override
     public void onNext(WatchResponse watchResponse) {
         if (Log.isDebugEnabled()) {
-            Log.debugf("Watch triggered for keys: ",
+            Log.debugf("Watch triggered for keys: %s",
                     watchResponse.getEvents().stream().map(e -> e.getKeyValue().getKey()).collect(Collectors.toList()));
         }
         for (var event : watchResponse.getEvents()) {
             var kv = event.getKeyValue();
             var key = kv.getKey();
-            Log.infof("Processing %s event for key %s", event.getEventType(), key);
-            Key.fromEtcdKeyOptional(kv.getKey(), JobRosterKey.class).ifPresent(k -> {
-                switch (event.getEventType()) {
-                    case PUT -> {
-                        var jobParams = new JobParameters(kv.getValue());
-                        createJob(k, jobParams);
+            Key.fromEtcdKeyOptional(key, JobRosterKey.class).ifPresentOrElse(k -> {
+                Log.debugf("Processing %s event for key %s", event.getEventType(), key);
+                try {
+                    switch (event.getEventType()) {
+                        case PUT -> {
+                            if (!event.getPrevKV().getValue().isEmpty()) {
+                                Log.debugf("Skipping event for key %s - roster update", key);
+                                break;
+                            }
+                            // Roster for VC job created, create roster entry and launch local VCP job
+                            JobData jobData = objectMapper.readValue(kv.getValue().getBytes(), JobData.class);
+                            JobRosterEntryKey jreKey = new JobRosterEntryKey(k.jobId(), scheduler.getSpec().master()
+                                    ? 0 : 1);
+                            etcdClient.getKVClient().put(jreKey.toEtcdKey(),
+                                    ByteSequence.from(JobState.CREATED.toString(), StandardCharsets.UTF_8)).thenRun(() -> {
+                                createJob(k, jobData.jobParameters());
+                            });
+                        }
+                        case DELETE -> {
+                            /*
+                             * Roster for VC job has been deleted:
+                             * (1) activate tuple chunk, iff job has been successful
+                             * (2) delete local VCP job
+                             */
+                            JobData jobData = objectMapper.readValue(event.getPrevKV().getValue().getBytes(),
+                                    JobData.class);
+                            if (jobData.jobState() == JobState.SUCCEEDED) {
+                                activateTuples(k.jobId());
+                            }
+                            deleteJob(k);
+                        }
+                        case UNRECOGNIZED -> Log.warn("Unrecognized watch event type encountered");
                     }
-                    case DELETE -> {
-                        activateTuples(k.jobId()); // TODO Only activate in case of success
-                        deleteJob(k);
-                    }
-                    case UNRECOGNIZED -> Log.warn("Unrecognized watch event type encountered");
+                } catch (IOException ioe) {
+                    Log.errorf(ioe, "Failed to handle roster event for job with ID %s", k.jobId());
                 }
-            });
+            }, () -> Log.debugf("Skipping key '%s' - not a job roster key", key));
         }
     }
 
     @Override
     public void onError(Throwable throwable) {
-        Log.errorf(throwable, "Error for watch on job manager for scheduler %s", scheduler.getFullResourceName());
+        Log.errorf(throwable, "Error for watch on job manager for scheduler %s", scheduler.getMetadata().getName());
     }
 
     @Override
     public void onCompleted() {
         Log.debugf("Watch result processing completed on job manager for scheduler %s",
-                scheduler.getFullResourceName());
+                scheduler.getMetadata().getName());
     }
 
     void createJob(JobRosterKey key, JobParameters params) {
-        var job = k8sClient.batch().v1().jobs().create(new JobBuilder()
+        var job = k8sClient.pods().create(new PodBuilder()
                 .withNewMetadata()
                 .withName("klyshko-crg-" + key.jobId())
                 .withLabels(Map.of(
+                        // TODO Add other recommended labels (see https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
+                        "app.kubernetes.io/part-of", "klyshko.carbynestack.io",
                         "klyshko.carbynestack.io/jobId", key.jobId().toString(),
                         "klyshko.carbynestack.io/type", params.tupleType().toString()))
                 .endMetadata()
-                .withNewSpec()
-                .withNewTemplate()
                 .withNewSpec()
                 .withShareProcessNamespace(true)
                 .withRestartPolicy("Never")
@@ -208,51 +237,60 @@ class JobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Job>, Closeabl
                                                 .build())
                                 .build())
                 .endSpec()
-                .endTemplate()
-                .withBackoffLimit(0)
-                .endSpec()
-                .build() // TODO: Add TTL (https://kubernetes.io/docs/concepts/workloads/controllers/job/#ttl-mechanism-for-finished-jobs)
+                .build()
         );
-        Log.infof("Job with name %s created for key %s", key, job.getFullResourceName());
+        Log.infof("Job with name %s created for key %s", job.getMetadata().getName(), key);
     }
 
     void deleteJob(JobRosterKey key) {
         boolean deleted =
-                k8sClient.batch().v1().jobs().withLabel("klyshko.carbynestack.io/jobId",
+                k8sClient.pods().withLabel("klyshko.carbynestack.io/jobId",
                         key.jobId().toString()).delete();
         Log.infof("Deletion of job with key %s %s", key.toString(), deleted ? "successful" : "failed");
     }
 
+    Optional<JobState> toVcpJobState(PodStatus status) {
+        return switch (status.getPhase()) {
+            case "Pending":
+                yield Optional.of(JobState.PENDING);
+            case "Running":
+                yield Optional.of(JobState.RUNNING);
+            case "Succeeded":
+                yield Optional.of(JobState.SUCCEEDED);
+            case "Failed":
+                yield Optional.of(JobState.FAILED);
+            default:
+                yield Optional.empty();
+        };
+    }
+
     @Override
-    public void eventReceived(Action action, Job job) {
-        String jobId = job.getMetadata().getLabels().get("klyshko.carbynestack.io/jobId");
+    public void eventReceived(Action action, Pod pod) {
+        String jobId = pod.getMetadata().getLabels().get("klyshko.carbynestack.io/jobId");
         if (jobId == null) {
-            Log.infof("Non Klyshko-managed job %s - skipping", job.getFullResourceName());
+            Log.debugf("Non Klyshko-managed pod %s - skipping", pod.getMetadata().getName());
             return;
         }
         JobRosterKey key = new JobRosterKey(UUID.fromString(jobId));
-        Log.infof("processing Klyshko-managed job %s with status %s and key %s", job.getFullResourceName(),
-                job.getStatus(), key);
+        Log.debugf("processing Klyshko-managed VCP job %s with status %s and key %s", pod.getMetadata().getName(),
+                pod.getStatus(), key);
+        // TODO Use configured player number
         JobRosterEntryKey jreKey = new JobRosterEntryKey(key.jobId(), scheduler.getSpec().master() ? 0 : 1);
-        var state = switch (action) {
-            case ADDED -> Optional.of(JobState.RUNNING);
-            case MODIFIED -> {
-                var status = job.getStatus();
-                var terminated =
-                        (status.getSucceeded() != null && status.getSucceeded() > 0) || (status.getFailed() != null && status.getFailed() > 0);
-                if (terminated) {
-                    yield Optional.of(JobState.COMPLETED);
-                } else {
-                    yield Optional.empty();
-                }
-            }
-            default -> Optional.empty();
-        };
-        state.map(s ->
-                etcdClient.getKVClient()
-                        .put(jreKey.toEtcdKey(), ByteSequence.from(s.toString(), StandardCharsets.UTF_8)).thenRun(() ->
-                                Log.infof("Updating roster entry for key %s to %s", jreKey, s)
-                        ));
+        toVcpJobState(pod.getStatus()).ifPresent(s -> {
+            var kbs = jreKey.toEtcdKey();
+            var sbs = ByteSequence.from(s.toString(), StandardCharsets.UTF_8);
+            // Update roster entry value if and only if state has changed
+            etcdClient.getKVClient()
+                    .txn()
+                    .If(new Cmp(kbs, Cmp.Op.NOT_EQUAL, CmpTarget.value(sbs)))
+                    .Then(Op.put(kbs, sbs, PutOption.DEFAULT))
+                    .commit()
+                    .thenAccept(r -> {
+                        if (!r.getPutResponses().isEmpty()) {
+                            Log.infof("Updated roster entry for key %s to %s", jreKey, s);
+                        }
+                    });
+        });
     }
 
     @Override
