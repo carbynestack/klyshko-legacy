@@ -6,6 +6,7 @@
  */
 package io.carbynestack.klyshko.provisioner;
 
+import io.quarkus.logging.Log;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -25,7 +26,11 @@ public class KlyshkoProvisioner implements QuarkusApplication {
     @Override
     public int run(String... args) {
         Quarkus.waitForExit();
-        return 0;
+        boolean successful = tupleUploader.isSuccessful();
+        if (!successful) {
+            Log.errorf("Tuple upload failed - exiting with non-zero exit code");
+        }
+        return successful ? 0 : 1;
     }
 
 }

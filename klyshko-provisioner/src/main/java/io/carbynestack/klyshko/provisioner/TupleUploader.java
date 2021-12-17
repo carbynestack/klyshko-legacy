@@ -37,6 +37,10 @@ import static org.apache.commons.io.IOUtils.toByteArray;
 @Singleton
 public class TupleUploader {
 
+    enum Status {
+        PENDING, SUCCESS, FAILURE
+    }
+
     @Inject
     KubernetesClient k8sClient;
 
@@ -48,6 +52,12 @@ public class TupleUploader {
 
     @ConfigProperty(name = "kii.tuple-file")
     Optional<String> tupleFilePath;
+
+    private Status status = Status.PENDING;
+
+    public boolean isSuccessful() {
+        return Status.SUCCESS.equals(status);
+    }
 
     private Option<Tuple2<UUID, TupleType>> getUploadArguments() {
         var jobId = Option.ofOptional(this.jobId)
@@ -67,26 +77,27 @@ public class TupleUploader {
         return jobId.flatMap(jid -> tupleType.map(tt -> new Tuple2<>(jid, tt)));
     }
 
-    // TODO: Signal failure to main
     @PreDestroy
     public void destroy() {
         Log.info("Shutdown sequence initiated");
-        getUploadArguments()
+        status = getUploadArguments()
                 .onEmpty(() ->
                         Log.warn("Skipping tuple chunk upload for job due to missing arguments"))
-                .peek(args -> {
+                .flatMap(args -> {
                     var chunkId = args._1;
                     var tupleType = args._2;
-                    getCastorUploadClient()
+                    return getCastorUploadClient()
                             .onEmpty(() -> Log.warnf("Skipping tuple chunk upload for job with id '%s' due to " +
                                     "unavailable Castor service", jobId))
-                            .peek(client -> Try.run(() -> uploadTuples(client, chunkId, tupleType))
+                            .flatMap(client -> Try.run(() -> uploadTuples(client, chunkId, tupleType))
                                     .onSuccess(c -> Log.infof("Tuples with chunk identifier '%s' successfully " +
                                                     "uploaded to Castor",
                                             chunkId))
                                     .onFailure(t -> Log.errorf(t, "Upload failed for tuple chunk with identifier '%s'",
-                                            chunkId)));
-                });
+                                            chunkId))
+                                    .toOption());
+                })
+                .isEmpty() ? Status.FAILURE : Status.SUCCESS;
     }
 
     private Option<String> getUrl(Service service) {
