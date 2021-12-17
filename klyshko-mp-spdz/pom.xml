@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2021 - for information on the respective copyright owner
+  ~ see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+  ~
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>klyshko-mp-spdz</artifactId>
+    <parent>
+        <groupId>io.carbynestack</groupId>
+        <artifactId>klyshko</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.38.0</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>carbynestack/klyshko-mp-spdz:${project.version}-fake-offline</name>
+                            <build>
+                                <dockerFile>Dockerfile.fake-offline</dockerFile>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                    <executions>
+                        <execution>
+                            <id>docker-build</id>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

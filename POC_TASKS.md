@@ -2,6 +2,13 @@
 
 ## Open
 
+- Refactorings
+  - Better name for job to disambiguate with K8s job
+  - Consistent (regarding level) and comprehensive logging
+  - Improve error handling and logging
+
+- Add tests
+
 - Implement secure offline phase
 
 - Limit tuple count to maximum chunk size
@@ -16,16 +23,7 @@
   - Make sure that all launched jobs are deleted when scheduler is deleted
   - Delete all metadata in etcd
 
-- Refactorings
-  - Better name for job to disambiguate with K8s job
-  - Consistent (regarding level) and comprehensive logging
-  - Improve error handling and logging
-  
-- Convert to real multi-module project (operator, sidecar)
-
 - Transition to distributed etcd cluster
-
-- Add tests
 
 - Add Badges
 
@@ -104,3 +102,5 @@
 - Move "kill logic" into JobManager
 
 - Document "Klyshko Integration Interface"
+
+- Convert to real multi-module project (operator, sidecar)

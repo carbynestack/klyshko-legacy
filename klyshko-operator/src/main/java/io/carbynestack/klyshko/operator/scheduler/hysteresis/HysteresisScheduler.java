@@ -264,9 +264,7 @@ public class HysteresisScheduler implements Closeable, io.etcd.jetcd.Watch.Liste
                             Log.errorf(t, "Roster update for job with ID %s failed", jobId);
                             return null;
                         }).join();
-            }, () -> {
-                Log.debugf("Skipping as key '%s' is not a job roster entry key", key);
-            });
+            }, () -> Log.debugf("Skipping as key '%s' is not a job roster entry key", key));
         }
 
     }

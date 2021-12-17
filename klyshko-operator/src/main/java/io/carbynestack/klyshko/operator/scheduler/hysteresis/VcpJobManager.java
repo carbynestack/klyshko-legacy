@@ -106,7 +106,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                             if (jobData.jobState() == JobState.SUCCEEDED) {
                                 activateTuples(k.jobId());
                             }
-                            //deleteJob(k);
+                            deleteJob(k);
                         }
                         case UNRECOGNIZED -> Log.warn("Unrecognized watch event type encountered");
                     }
@@ -156,7 +156,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                 .withRestartPolicy("Never")
                 .addNewContainer()
                 .withName("generator")
-                .withImage("carbynestack/klyshko-mp-spdz:1.0.0-SNAPSHOT") // TODO: Get from CRD
+                .withImage("carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-fake-offline") // TODO: Get from CRD
                 .withEnv(
                         new EnvVarBuilder()
                                 .withName("KII_JOB_ID")
@@ -211,7 +211,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
                 .endContainer()
                 .addNewContainer()
                 .withName("provisioner")
-                .withImage("carbynestack/klyshko-provisioner:1.0.0-SNAPSHOT")
+                .withImage("carbynestack/klyshko-provisioner:0.1-SNAPSHOT")
                 .withEnv(
                         new EnvVarBuilder()
                                 .withName("KII_JOB_ID")
