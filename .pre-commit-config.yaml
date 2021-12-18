@@ -10,6 +10,10 @@ repos:
     hooks:
       - id: pretty-format-java
         args: [--autofix, --google-java-formatter-version, 1.13.0]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: end-of-file-fixer
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.7
     hooks:
