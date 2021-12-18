@@ -12,54 +12,54 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.javaoperatorsdk.operator.api.*;
 import io.quarkus.logging.Log;
-
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Controller
 public class SchedulerController implements ResourceController<Scheduler> {
 
-    public static final String KIND = "Scheduler";
+  public static final String KIND = "Scheduler";
 
-    private final KubernetesClient kubernetesClient;
-    private final ObjectMapper objectMapper;
+  private final KubernetesClient kubernetesClient;
+  private final ObjectMapper objectMapper;
 
-    private final ConcurrentMap<String, HysteresisScheduler> schedulers;
+  private final ConcurrentMap<String, HysteresisScheduler> schedulers;
 
-    public SchedulerController() {
-        this(new DefaultKubernetesClient(), new ObjectMapper());
+  public SchedulerController() {
+    this(new DefaultKubernetesClient(), new ObjectMapper());
+  }
+
+  public SchedulerController(KubernetesClient kubernetesClient, ObjectMapper objectMapper) {
+    this.kubernetesClient = kubernetesClient;
+    this.objectMapper = objectMapper;
+    schedulers = new ConcurrentHashMap<>();
+  }
+
+  @Override
+  public UpdateControl<Scheduler> createOrUpdateResource(
+      Scheduler resource, Context<Scheduler> context) {
+    String name = resource.getFullResourceName();
+    boolean exists = schedulers.containsKey(name);
+    if (!exists) {
+      Log.infof("HysteresisScheduler created: %s", resource.getFullResourceName());
+      schedulers.put(
+          resource.getFullResourceName(),
+          new HysteresisScheduler(kubernetesClient, resource, objectMapper));
+    } // TODO Implement update logic for existing scheduler
+    return UpdateControl.noUpdate();
+  }
+
+  @Override
+  public DeleteControl deleteResource(Scheduler resource, Context<Scheduler> context) {
+    HysteresisScheduler scheduler = schedulers.remove(resource.getFullResourceName());
+    if (scheduler != null) {
+      scheduler.close();
     }
+    Log.infof("HysteresisScheduler deleted: %s", resource.getFullResourceName());
+    return DeleteControl.DEFAULT_DELETE;
+  }
 
-    public SchedulerController(KubernetesClient kubernetesClient, ObjectMapper objectMapper) {
-        this.kubernetesClient = kubernetesClient;
-        this.objectMapper = objectMapper;
-        schedulers = new ConcurrentHashMap<>();
-    }
-
-    @Override
-    public UpdateControl<Scheduler> createOrUpdateResource(
-            Scheduler resource, Context<Scheduler> context) {
-        String name = resource.getFullResourceName();
-        boolean exists = schedulers.containsKey(name);
-        if (!exists) {
-            Log.infof("HysteresisScheduler created: %s", resource.getFullResourceName());
-            schedulers.put(resource.getFullResourceName(), new HysteresisScheduler(kubernetesClient, resource, objectMapper));
-        } // TODO Implement update logic for existing scheduler
-        return UpdateControl.noUpdate();
-    }
-
-    @Override
-    public DeleteControl deleteResource(Scheduler resource, Context<Scheduler> context) {
-        HysteresisScheduler scheduler = schedulers.remove(resource.getFullResourceName());
-        if (scheduler != null) {
-            scheduler.close();
-        }
-        Log.infof("HysteresisScheduler deleted: %s", resource.getFullResourceName());
-        return DeleteControl.DEFAULT_DELETE;
-    }
-
-    void fetchTupleTelemetry() {
-        String url = kubernetesClient.services().withName("test").getURL("");
-    }
-
+  void fetchTupleTelemetry() {
+    String url = kubernetesClient.services().withName("test").getURL("");
+  }
 }

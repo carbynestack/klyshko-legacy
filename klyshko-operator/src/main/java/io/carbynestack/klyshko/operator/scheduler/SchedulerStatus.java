@@ -6,5 +6,4 @@
  */
 package io.carbynestack.klyshko.operator.scheduler;
 
-public record SchedulerStatus() {
-}
+public record SchedulerStatus() {}

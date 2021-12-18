@@ -7,10 +7,9 @@
 package io.carbynestack.klyshko.operator.scheduler;
 
 public record SchedulerSpec(
-        boolean master,
-        int parallelism,
-        int lowerThreshold,
-        int upperThreshold,
-        int tuplesPerJob,
-        String etcdEndpoint) {
-}
+    boolean master,
+    int parallelism,
+    int lowerThreshold,
+    int upperThreshold,
+    int tuplesPerJob,
+    String etcdEndpoint) {}

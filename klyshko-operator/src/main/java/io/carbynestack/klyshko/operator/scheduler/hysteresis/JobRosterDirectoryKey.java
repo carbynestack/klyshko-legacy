@@ -7,21 +7,19 @@
 package io.carbynestack.klyshko.operator.scheduler.hysteresis;
 
 import io.etcd.jetcd.ByteSequence;
-
 import java.util.Optional;
 
 public record JobRosterDirectoryKey() implements Key {
 
-    public static final JobRosterDirectoryKey INSTANCE = new JobRosterDirectoryKey();
+  public static final JobRosterDirectoryKey INSTANCE = new JobRosterDirectoryKey();
 
-    @Override
-    public String toString() {
-        return "/jobs";
-    }
+  @Override
+  public String toString() {
+    return "/jobs";
+  }
 
-    @Override
-    public Optional<ByteSequence> toEtcdParentKey() {
-        return Optional.empty();
-    }
-
+  @Override
+  public Optional<ByteSequence> toEtcdParentKey() {
+    return Optional.empty();
+  }
 }

@@ -13,8 +13,5 @@ import io.fabric8.kubernetes.model.annotation.Version;
 
 @Group("klyshko.carbynestack.io")
 @Version("v1alpha1")
-public class Scheduler extends CustomResource<SchedulerSpec, SchedulerStatus> implements
-        Namespaced {
-}
-
-
+public class Scheduler extends CustomResource<SchedulerSpec, SchedulerStatus>
+    implements Namespaced {}

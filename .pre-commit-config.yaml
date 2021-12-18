@@ -5,6 +5,11 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 repos:
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.2.0
+    hooks:
+      - id: pretty-format-java
+        args: [--autofix, --google-java-formatter-version, 1.13.0]
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.7
     hooks:
