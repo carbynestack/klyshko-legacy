@@ -1,1355 +1,1355 @@
 <attributionReport>
     <dependencies>
-            <dependency>
-                <name>Apache Commons Codec</name>
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
-         <version>1.15</version>
-         <projectUrl>https://commons.apache.org/proper/commons-codec/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache Commons Compress</name>
-         <groupId>org.apache.commons</groupId>
-         <artifactId>commons-compress</artifactId>
-         <version>1.21</version>
-         <projectUrl>https://commons.apache.org/proper/commons-compress/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache Commons IO</name>
-         <groupId>commons-io</groupId>
-         <artifactId>commons-io</artifactId>
-         <version>2.11.0</version>
-         <projectUrl>https://commons.apache.org/proper/commons-io/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache Commons Lang</name>
-         <groupId>org.apache.commons</groupId>
-         <artifactId>commons-lang3</artifactId>
-         <version>3.12.0</version>
-         <projectUrl>https://commons.apache.org/proper/commons-lang/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache Commons Logging</name>
-         <groupId>commons-logging</groupId>
-         <artifactId>commons-logging</artifactId>
-         <version>1.2</version>
-         <projectUrl>http://commons.apache.org/proper/commons-logging/</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache HttpClient</name>
-         <groupId>org.apache.httpcomponents</groupId>
-         <artifactId>httpclient</artifactId>
-         <version>4.5.13</version>
-         <projectUrl>http://hc.apache.org/httpcomponents-client</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Apache HttpCore</name>
-         <groupId>org.apache.httpcomponents</groupId>
-         <artifactId>httpcore</artifactId>
-         <version>4.4.14</version>
-         <projectUrl>http://hc.apache.org/httpcomponents-core-ga</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>ArC - Runtime</name>
-         <groupId>io.quarkus.arc</groupId>
-         <artifactId>arc</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>http://www.jboss.org/arc-parent/arc</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Automaton</name>
-         <groupId>dk.brics.automaton</groupId>
-         <artifactId>automaton</artifactId>
-         <version>1.11-8</version>
-         <projectUrl>http://www.brics.dk/automaton/</projectUrl>
-         <licenses>
-            <license>
-               <name>BSD</name>
-               <url>http://www.opensource.org/licenses/bsd-license.php</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Carbyne Stack Java HTTP Client</name>
-         <groupId>io.carbynestack</groupId>
-         <artifactId>java-http-client</artifactId>
-         <version>0.1-SNAPSHOT-1257534854-1-46815a7</version>
-         <licenses>
-            <license>
-               <name>Apache-2.0</name>
-               <url>https://spdx.org/licenses/Apache-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Carbyne Stack MP-SPDZ Integration Utilities</name>
-         <groupId>io.carbynestack</groupId>
-         <artifactId>mp-spdz-integration</artifactId>
-         <version>0.1-SNAPSHOT-1257545971-1-d751c28</version>
-         <licenses>
-            <license>
-               <name>Apache-2.0</name>
-               <url>https://spdx.org/licenses/Apache-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>castor-common</name>
-         <groupId>io.carbynestack</groupId>
-         <artifactId>castor-common</artifactId>
-         <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
-         <licenses>
-            <license>
-               <name>Apache-2.0</name>
-               <url>https://spdx.org/licenses/Apache-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>castor-upload-java-client</name>
-         <groupId>io.carbynestack</groupId>
-         <artifactId>castor-upload-java-client</artifactId>
-         <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
-         <licenses>
-            <license>
-               <name>Apache-2.0</name>
-               <url>https://spdx.org/licenses/Apache-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes :: Java Client</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-client</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-client/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Admission Registration, Authentication and Authorization</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-admissionregistration</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-admissionregistration/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: API Extensions</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-apiextensions</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-apiextensions/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Apps</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-apps</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-apps/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Autoscaling</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-autoscaling</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-autoscaling/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Batch</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-batch</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-batch/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Certificates</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-certificates</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-certificates/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Common</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-common</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-common/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Coordination</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-coordination</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-coordination/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Core</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-core</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-core/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Discovery</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-discovery</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-discovery/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Events</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-events</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-events/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Extensions</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-extensions</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-extensions/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: FlowControl</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-flowcontrol</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-flowcontrol/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Metrics</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-metrics</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-metrics/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Networking</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-networking</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-networking/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Node</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-node</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-node/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Policy</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-policy</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-policy/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: RBAC</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-rbac</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-rbac/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Scheduling</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-scheduling</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-scheduling/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Fabric8 :: Kubernetes Model :: Storage Class</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>kubernetes-model-storageclass</artifactId>
-         <version>5.8.0</version>
-         <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-storageclass/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Generex</name>
-         <groupId>com.github.mifmif</groupId>
-         <artifactId>generex</artifactId>
-         <version>1.0.2</version>
-         <projectUrl>https://github.com/mifmif/Generex/tree/master</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Graal Sdk</name>
-         <groupId>org.graalvm.sdk</groupId>
-         <artifactId>graal-sdk</artifactId>
-         <version>21.2.0</version>
-         <projectUrl>https://github.com/oracle/graal</projectUrl>
-         <licenses>
-            <license>
-               <name>Universal Permissive License, Version 1.0</name>
-               <url>http://opensource.org/licenses/UPL</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson datatype: jdk8</name>
-         <groupId>com.fasterxml.jackson.datatype</groupId>
-         <artifactId>jackson-datatype-jdk8</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jdk8</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson datatype: JSR310</name>
-         <groupId>com.fasterxml.jackson.datatype</groupId>
-         <artifactId>jackson-datatype-jsr310</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jsr310</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson-annotations</name>
-         <groupId>com.fasterxml.jackson.core</groupId>
-         <artifactId>jackson-annotations</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>http://github.com/FasterXML/jackson</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson-core</name>
-         <groupId>com.fasterxml.jackson.core</groupId>
-         <artifactId>jackson-core</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>https://github.com/FasterXML/jackson-core</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>jackson-databind</name>
-         <groupId>com.fasterxml.jackson.core</groupId>
-         <artifactId>jackson-databind</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>http://github.com/FasterXML/jackson</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson-dataformat-YAML</name>
-         <groupId>com.fasterxml.jackson.dataformat</groupId>
-         <artifactId>jackson-dataformat-yaml</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>https://github.com/FasterXML/jackson-dataformats-text</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jackson-module-parameter-names</name>
-         <groupId>com.fasterxml.jackson.module</groupId>
-         <artifactId>jackson-module-parameter-names</artifactId>
-         <version>2.12.5</version>
-         <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta Annotations API</name>
-         <groupId>jakarta.annotation</groupId>
-         <artifactId>jakarta.annotation-api</artifactId>
-         <version>1.3.5</version>
-         <projectUrl>https://projects.eclipse.org/projects/ee4j.ca</projectUrl>
-         <licenses>
-            <license>
-               <name>EPL 2.0</name>
-               <url>http://www.eclipse.org/legal/epl-2.0</url>
-            </license>
-            <license>
-               <name>GPL2 w/ CPE</name>
-               <url>https://www.gnu.org/software/classpath/license.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta CDI</name>
-         <groupId>jakarta.enterprise</groupId>
-         <artifactId>jakarta.enterprise.cdi-api</artifactId>
-         <version>2.0.2</version>
-         <projectUrl>http://cdi-spec.org</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License 2.0</name>
-               <url>https://repository.jboss.org/licenses/apache-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta Dependency Injection</name>
-         <groupId>jakarta.inject</groupId>
-         <artifactId>jakarta.inject-api</artifactId>
-         <version>1.0</version>
-         <projectUrl>https://github.com/eclipse-ee4j/injection-api</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta Expression Language 3.0 API</name>
-         <groupId>jakarta.el</groupId>
-         <artifactId>jakarta.el-api</artifactId>
-         <version>3.0.3</version>
-         <projectUrl>https://projects.eclipse.org/projects/ee4j.el</projectUrl>
-         <licenses>
-            <license>
-               <name>EPL 2.0</name>
-               <url>http://www.eclipse.org/legal/epl-2.0</url>
-            </license>
-            <license>
-               <name>GPL2 w/ CPE</name>
-               <url>https://www.gnu.org/software/classpath/license.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta Interceptors</name>
-         <groupId>jakarta.interceptor</groupId>
-         <artifactId>jakarta.interceptor-api</artifactId>
-         <version>1.2.5</version>
-         <projectUrl>https://github.com/eclipse-ee4j/interceptor-api</projectUrl>
-         <licenses>
-            <license>
-               <name>EPL 2.0</name>
-               <url>http://www.eclipse.org/legal/epl-2.0</url>
-            </license>
-            <license>
-               <name>GPL2 w/ CPE</name>
-               <url>https://www.gnu.org/software/classpath/license.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Jakarta XML Binding API</name>
-         <groupId>org.jboss.spec.javax.xml.bind</groupId>
-         <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
-         <version>2.0.0.Final</version>
-         <projectUrl>https://github.com/eclipse-ee4j/jaxb-api/jboss-jaxb-api_2.3_spec</projectUrl>
-         <licenses>
-            <license>
-               <name>Eclipse Distribution License - v 1.0</name>
-               <url>http://www.eclipse.org/org/documents/edl-v10.php</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>javax.transaction API</name>
-         <groupId>jakarta.transaction</groupId>
-         <artifactId>jakarta.transaction-api</artifactId>
-         <version>1.3.3</version>
-         <projectUrl>https://projects.eclipse.org/projects/ee4j.jta</projectUrl>
-         <licenses>
-            <license>
-               <name>EPL 2.0</name>
-               <url>http://www.eclipse.org/legal/epl-2.0</url>
-            </license>
-            <license>
-               <name>GPL2 w/ CPE</name>
-               <url>https://www.gnu.org/software/classpath/license.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>JBoss Log Manager (Embedded)</name>
-         <groupId>org.jboss.logmanager</groupId>
-         <artifactId>jboss-logmanager-embedded</artifactId>
-         <version>1.0.9</version>
-         <projectUrl>http://www.jboss.org/jboss-logmanager-embedded</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License 2.0</name>
-               <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>JBoss Logging 3</name>
-         <groupId>org.jboss.logging</groupId>
-         <artifactId>jboss-logging</artifactId>
-         <version>3.4.2.Final</version>
-         <projectUrl>http://www.jboss.org</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>JBoss Logging I18n Annotations</name>
-         <groupId>org.jboss.logging</groupId>
-         <artifactId>jboss-logging-annotations</artifactId>
-         <version>2.2.1.Final</version>
-         <projectUrl>http://www.jboss.org/jboss-logging-tools-parent/jboss-logging-annotations</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>JBoss Threads</name>
-         <groupId>org.jboss.threads</groupId>
-         <artifactId>jboss-threads</artifactId>
-         <version>3.4.2.Final</version>
-         <projectUrl>http://www.jboss.org/jboss-threads</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>JUL to SLF4J bridge</name>
-         <groupId>org.slf4j</groupId>
-         <artifactId>jul-to-slf4j</artifactId>
-         <version>1.7.30</version>
-         <projectUrl>http://www.slf4j.org</projectUrl>
-         <licenses>
-            <license>
-               <name>MIT License</name>
-               <url>http://www.opensource.org/licenses/mit-license.php</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>MicroProfile Config API</name>
-         <groupId>org.eclipse.microprofile.config</groupId>
-         <artifactId>microprofile-config-api</artifactId>
-         <version>2.0</version>
-         <projectUrl>https://microprofile.io/project/eclipse/microprofile-config</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache-2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>MicroProfile Context Propagation</name>
-         <groupId>org.eclipse.microprofile.context-propagation</groupId>
-         <artifactId>microprofile-context-propagation-api</artifactId>
-         <version>1.2</version>
-         <projectUrl>http://microprofile.io/microprofile-context-propagation-api</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>OkHttp</name>
-         <groupId>com.squareup.okhttp3</groupId>
-         <artifactId>okhttp</artifactId>
-         <version>3.14.9</version>
-         <projectUrl>https://github.com/square/okhttp/okhttp</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>OkHttp Logging Interceptor</name>
-         <groupId>com.squareup.okhttp3</groupId>
-         <artifactId>logging-interceptor</artifactId>
-         <version>3.14.9</version>
-         <projectUrl>https://github.com/square/okhttp/logging-interceptor</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Okio</name>
-         <groupId>com.squareup.okio</groupId>
-         <artifactId>okio</artifactId>
-         <version>1.17.2</version>
-         <projectUrl>https://github.com/square/okio/okio</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Project Lombok</name>
-         <groupId>org.projectlombok</groupId>
-         <artifactId>lombok</artifactId>
-         <version>1.18.22</version>
-         <projectUrl>https://projectlombok.org</projectUrl>
-         <licenses>
-            <license>
-               <name>The MIT License</name>
-               <url>https://projectlombok.org/LICENSE</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - ArC - Runtime</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-arc</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-arc-parent/quarkus-arc</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Bootstrap - Runner</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-bootstrap-runner</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>http://www.jboss.org/quarkus-bootstrap-parent/quarkus-bootstrap-runner</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Container Image - Jib</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-container-image-jib</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-container-image-parent/quarkus-container-image-jib-parent/quarkus-container-image-jib</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Container Image - Runtime</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-container-image</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-container-image-parent/quarkus-container-image</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Core - Runtime</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-core</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-core-parent/quarkus-core</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Development mode - SPI</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-development-mode-spi</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-development-mode-spi</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - IDE Launcher</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-ide-launcher</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-ide-launcher</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Jackson - Runtime</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-jackson</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-jackson-parent/quarkus-jackson</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Kubernetes Client - Runtime</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-kubernetes-client</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-kubernetes-client-parent/quarkus-kubernetes-client</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Quarkus - Kubernetes Client - Runtime - Internal</name>
-         <groupId>io.quarkus</groupId>
-         <artifactId>quarkus-kubernetes-client-internal</artifactId>
-         <version>2.4.2.Final</version>
-         <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-kubernetes-client-parent/quarkus-kubernetes-client-internal</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SLF4J API Module</name>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-         <version>1.7.30</version>
-         <projectUrl>http://www.slf4j.org</projectUrl>
-         <licenses>
-            <license>
-               <name>MIT License</name>
-               <url>http://www.opensource.org/licenses/mit-license.php</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SLF4J: JBoss Log Manager</name>
-         <groupId>org.jboss.slf4j</groupId>
-         <artifactId>slf4j-jboss-logmanager</artifactId>
-         <version>1.1.0.Final</version>
-         <projectUrl>http://www.jboss.org/slf4j-jboss-logmanager</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License 2.0</name>
-               <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: Annotations</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-annotation</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-annotation</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: Classloader</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-classloader</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-classloader</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: Constraints</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-constraint</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-constraint</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: Expressions</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-expression</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-expression</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: Functions</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-function</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-function</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye Common: IO</name>
-         <groupId>io.smallrye.common</groupId>
-         <artifactId>smallrye-common-io</artifactId>
-         <version>1.6.0</version>
-         <projectUrl>http://smallrye.io/smallrye-common-io</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye: Common classes</name>
-         <groupId>io.smallrye.config</groupId>
-         <artifactId>smallrye-config-common</artifactId>
-         <version>2.5.1</version>
-         <projectUrl>http://smallrye.io/smallrye-config-common</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye: MicroProfile Config CDI Implementation</name>
-         <groupId>io.smallrye.config</groupId>
-         <artifactId>smallrye-config</artifactId>
-         <version>2.5.1</version>
-         <projectUrl>http://smallrye.io/smallrye-config</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye: MicroProfile Config Core Implementation</name>
-         <groupId>io.smallrye.config</groupId>
-         <artifactId>smallrye-config-core</artifactId>
-         <version>2.5.1</version>
-         <projectUrl>http://smallrye.io/smallrye-config-core</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SmallRye: MicroProfile Config Source - Yaml</name>
-         <groupId>io.smallrye.config</groupId>
-         <artifactId>smallrye-config-source-yaml</artifactId>
-         <version>2.5.1</version>
-         <projectUrl>http://smallrye.io/smallrye-config-source-yaml</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>SnakeYAML</name>
-         <groupId>org.yaml</groupId>
-         <artifactId>snakeyaml</artifactId>
-         <version>1.29</version>
-         <projectUrl>http://www.snakeyaml.org</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring AOP</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-aop</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Beans</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-beans</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Commons Logging Bridge</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-jcl</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Context</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-context</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Core</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-core</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Expression Language (SpEL)</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-expression</artifactId>
-         <version>5.2.1.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Messaging</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-messaging</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Retry</name>
-         <groupId>org.springframework.retry</groupId>
-         <artifactId>spring-retry</artifactId>
-         <version>1.2.5.RELEASE</version>
-         <projectUrl>https://www.springsource.org</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring Web</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-web</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Spring WebSocket</name>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-websocket</artifactId>
-         <version>5.2.3.RELEASE</version>
-         <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>spring-security-core</name>
-         <groupId>org.springframework.security</groupId>
-         <artifactId>spring-security-core</artifactId>
-         <version>5.2.1.RELEASE</version>
-         <projectUrl>http://spring.io/spring-security</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>spring-security-web</name>
-         <groupId>org.springframework.security</groupId>
-         <artifactId>spring-security-web</artifactId>
-         <version>5.2.1.RELEASE</version>
-         <projectUrl>http://spring.io/spring-security</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>tomcat-annotations-api</name>
-         <groupId>org.apache.tomcat</groupId>
-         <artifactId>tomcat-annotations-api</artifactId>
-         <version>9.0.30</version>
-         <projectUrl>https://tomcat.apache.org/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>tomcat-embed-core</name>
-         <groupId>org.apache.tomcat.embed</groupId>
-         <artifactId>tomcat-embed-core</artifactId>
-         <version>9.0.30</version>
-         <projectUrl>https://tomcat.apache.org/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>tomcat-embed-websocket</name>
-         <groupId>org.apache.tomcat.embed</groupId>
-         <artifactId>tomcat-embed-websocket</artifactId>
-         <version>9.0.30</version>
-         <projectUrl>https://tomcat.apache.org/</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Vavr</name>
-         <groupId>io.vavr</groupId>
-         <artifactId>vavr</artifactId>
-         <version>0.10.3</version>
-         <projectUrl>http://vavr.io</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>Vavr Match</name>
-         <groupId>io.vavr</groupId>
-         <artifactId>vavr-match</artifactId>
-         <version>0.10.3</version>
-         <projectUrl>http://vavr.io</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>wildfly-common</name>
-         <groupId>org.wildfly.common</groupId>
-         <artifactId>wildfly-common</artifactId>
-         <version>1.5.4.Final-format-001</version>
-         <projectUrl>http://www.jboss.org/wildfly-common</projectUrl>
-         <licenses>
-            <license>
-               <name>Apache License 2.0</name>
-               <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
-            <dependency>
-                <name>zjsonpatch</name>
-         <groupId>io.fabric8</groupId>
-         <artifactId>zjsonpatch</artifactId>
-         <version>0.3.0</version>
-         <projectUrl>https://github.com/fabric8io/zjsonpatch/</projectUrl>
-         <licenses>
-            <license>
-               <name>The Apache Software License, Version 2.0</name>
-               <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            </license>
-         </licenses>
-            </dependency>
+        <dependency>
+            <name>Apache Commons Codec</name>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+            <projectUrl>https://commons.apache.org/proper/commons-codec/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache Commons Compress</name>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.21</version>
+            <projectUrl>https://commons.apache.org/proper/commons-compress/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache Commons IO</name>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+            <projectUrl>https://commons.apache.org/proper/commons-io/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache Commons Lang</name>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
+            <projectUrl>https://commons.apache.org/proper/commons-lang/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache Commons Logging</name>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+            <projectUrl>http://commons.apache.org/proper/commons-logging/</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache HttpClient</name>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+            <projectUrl>http://hc.apache.org/httpcomponents-client</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Apache HttpCore</name>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.14</version>
+            <projectUrl>http://hc.apache.org/httpcomponents-core-ga</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>ArC - Runtime</name>
+            <groupId>io.quarkus.arc</groupId>
+            <artifactId>arc</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>http://www.jboss.org/arc-parent/arc</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Automaton</name>
+            <groupId>dk.brics.automaton</groupId>
+            <artifactId>automaton</artifactId>
+            <version>1.11-8</version>
+            <projectUrl>http://www.brics.dk/automaton/</projectUrl>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                    <url>http://www.opensource.org/licenses/bsd-license.php</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Carbyne Stack Java HTTP Client</name>
+            <groupId>io.carbynestack</groupId>
+            <artifactId>java-http-client</artifactId>
+            <version>0.1-SNAPSHOT-1257534854-1-46815a7</version>
+            <licenses>
+                <license>
+                    <name>Apache-2.0</name>
+                    <url>https://spdx.org/licenses/Apache-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Carbyne Stack MP-SPDZ Integration Utilities</name>
+            <groupId>io.carbynestack</groupId>
+            <artifactId>mp-spdz-integration</artifactId>
+            <version>0.1-SNAPSHOT-1257545971-1-d751c28</version>
+            <licenses>
+                <license>
+                    <name>Apache-2.0</name>
+                    <url>https://spdx.org/licenses/Apache-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>castor-common</name>
+            <groupId>io.carbynestack</groupId>
+            <artifactId>castor-common</artifactId>
+            <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
+            <licenses>
+                <license>
+                    <name>Apache-2.0</name>
+                    <url>https://spdx.org/licenses/Apache-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>castor-upload-java-client</name>
+            <groupId>io.carbynestack</groupId>
+            <artifactId>castor-upload-java-client</artifactId>
+            <version>0.1-SNAPSHOT-1370947202-5-b889feb</version>
+            <licenses>
+                <license>
+                    <name>Apache-2.0</name>
+                    <url>https://spdx.org/licenses/Apache-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes :: Java Client</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-client</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-client/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Admission Registration, Authentication and Authorization</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-admissionregistration</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-admissionregistration/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: API Extensions</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-apiextensions</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-apiextensions/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Apps</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-apps</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-apps/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Autoscaling</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-autoscaling</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-autoscaling/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Batch</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-batch</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-batch/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Certificates</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-certificates</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-certificates/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Common</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-common</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-common/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Coordination</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-coordination</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-coordination/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Core</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-core</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-core/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Discovery</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-discovery</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-discovery/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Events</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-events</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-events/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Extensions</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-extensions</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-extensions/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: FlowControl</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-flowcontrol</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-flowcontrol/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Metrics</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-metrics</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-metrics/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Networking</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-networking</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-networking/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Node</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-node</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-node/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Policy</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-policy</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-policy/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: RBAC</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-rbac</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-rbac/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Scheduling</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-scheduling</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-scheduling/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Fabric8 :: Kubernetes Model :: Storage Class</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>kubernetes-model-storageclass</artifactId>
+            <version>5.8.0</version>
+            <projectUrl>http://fabric8.io/kubernetes-model-generator/kubernetes-model-storageclass/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Generex</name>
+            <groupId>com.github.mifmif</groupId>
+            <artifactId>generex</artifactId>
+            <version>1.0.2</version>
+            <projectUrl>https://github.com/mifmif/Generex/tree/master</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Graal Sdk</name>
+            <groupId>org.graalvm.sdk</groupId>
+            <artifactId>graal-sdk</artifactId>
+            <version>21.2.0</version>
+            <projectUrl>https://github.com/oracle/graal</projectUrl>
+            <licenses>
+                <license>
+                    <name>Universal Permissive License, Version 1.0</name>
+                    <url>http://opensource.org/licenses/UPL</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson datatype: jdk8</name>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jdk8</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson datatype: JSR310</name>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jsr310</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson-annotations</name>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>http://github.com/FasterXML/jackson</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson-core</name>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>https://github.com/FasterXML/jackson-core</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>jackson-databind</name>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>http://github.com/FasterXML/jackson</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson-dataformat-YAML</name>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>https://github.com/FasterXML/jackson-dataformats-text</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jackson-module-parameter-names</name>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+            <version>2.12.5</version>
+            <projectUrl>https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta Annotations API</name>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>1.3.5</version>
+            <projectUrl>https://projects.eclipse.org/projects/ee4j.ca</projectUrl>
+            <licenses>
+                <license>
+                    <name>EPL 2.0</name>
+                    <url>http://www.eclipse.org/legal/epl-2.0</url>
+                </license>
+                <license>
+                    <name>GPL2 w/ CPE</name>
+                    <url>https://www.gnu.org/software/classpath/license.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta CDI</name>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>2.0.2</version>
+            <projectUrl>http://cdi-spec.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>https://repository.jboss.org/licenses/apache-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta Dependency Injection</name>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>1.0</version>
+            <projectUrl>https://github.com/eclipse-ee4j/injection-api</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta Expression Language 3.0 API</name>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
+            <version>3.0.3</version>
+            <projectUrl>https://projects.eclipse.org/projects/ee4j.el</projectUrl>
+            <licenses>
+                <license>
+                    <name>EPL 2.0</name>
+                    <url>http://www.eclipse.org/legal/epl-2.0</url>
+                </license>
+                <license>
+                    <name>GPL2 w/ CPE</name>
+                    <url>https://www.gnu.org/software/classpath/license.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta Interceptors</name>
+            <groupId>jakarta.interceptor</groupId>
+            <artifactId>jakarta.interceptor-api</artifactId>
+            <version>1.2.5</version>
+            <projectUrl>https://github.com/eclipse-ee4j/interceptor-api</projectUrl>
+            <licenses>
+                <license>
+                    <name>EPL 2.0</name>
+                    <url>http://www.eclipse.org/legal/epl-2.0</url>
+                </license>
+                <license>
+                    <name>GPL2 w/ CPE</name>
+                    <url>https://www.gnu.org/software/classpath/license.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Jakarta XML Binding API</name>
+            <groupId>org.jboss.spec.javax.xml.bind</groupId>
+            <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
+            <version>2.0.0.Final</version>
+            <projectUrl>https://github.com/eclipse-ee4j/jaxb-api/jboss-jaxb-api_2.3_spec</projectUrl>
+            <licenses>
+                <license>
+                    <name>Eclipse Distribution License - v 1.0</name>
+                    <url>http://www.eclipse.org/org/documents/edl-v10.php</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>javax.transaction API</name>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>1.3.3</version>
+            <projectUrl>https://projects.eclipse.org/projects/ee4j.jta</projectUrl>
+            <licenses>
+                <license>
+                    <name>EPL 2.0</name>
+                    <url>http://www.eclipse.org/legal/epl-2.0</url>
+                </license>
+                <license>
+                    <name>GPL2 w/ CPE</name>
+                    <url>https://www.gnu.org/software/classpath/license.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>JBoss Log Manager (Embedded)</name>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager-embedded</artifactId>
+            <version>1.0.9</version>
+            <projectUrl>http://www.jboss.org/jboss-logmanager-embedded</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>JBoss Logging 3</name>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.2.Final</version>
+            <projectUrl>http://www.jboss.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>JBoss Logging I18n Annotations</name>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-annotations</artifactId>
+            <version>2.2.1.Final</version>
+            <projectUrl>http://www.jboss.org/jboss-logging-tools-parent/jboss-logging-annotations</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>JBoss Threads</name>
+            <groupId>org.jboss.threads</groupId>
+            <artifactId>jboss-threads</artifactId>
+            <version>3.4.2.Final</version>
+            <projectUrl>http://www.jboss.org/jboss-threads</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>JUL to SLF4J bridge</name>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.30</version>
+            <projectUrl>http://www.slf4j.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                    <url>http://www.opensource.org/licenses/mit-license.php</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>MicroProfile Config API</name>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>2.0</version>
+            <projectUrl>https://microprofile.io/project/eclipse/microprofile-config</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache-2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>MicroProfile Context Propagation</name>
+            <groupId>org.eclipse.microprofile.context-propagation</groupId>
+            <artifactId>microprofile-context-propagation-api</artifactId>
+            <version>1.2</version>
+            <projectUrl>http://microprofile.io/microprofile-context-propagation-api</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>OkHttp</name>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.14.9</version>
+            <projectUrl>https://github.com/square/okhttp/okhttp</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>OkHttp Logging Interceptor</name>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>3.14.9</version>
+            <projectUrl>https://github.com/square/okhttp/logging-interceptor</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Okio</name>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>1.17.2</version>
+            <projectUrl>https://github.com/square/okio/okio</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Project Lombok</name>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <projectUrl>https://projectlombok.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>The MIT License</name>
+                    <url>https://projectlombok.org/LICENSE</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - ArC - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-arc</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-arc-parent/quarkus-arc</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Bootstrap - Runner</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-bootstrap-runner</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>http://www.jboss.org/quarkus-bootstrap-parent/quarkus-bootstrap-runner</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.html</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Container Image - Jib</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-container-image-jib</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-container-image-parent/quarkus-container-image-jib-parent/quarkus-container-image-jib</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Container Image - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-container-image</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-container-image-parent/quarkus-container-image</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Core - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-core</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-core-parent/quarkus-core</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Development mode - SPI</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-development-mode-spi</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-development-mode-spi</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - IDE Launcher</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-ide-launcher</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-ide-launcher</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Jackson - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jackson</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-jackson-parent/quarkus-jackson</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Kubernetes Client - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-kubernetes-client</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-kubernetes-client-parent/quarkus-kubernetes-client</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - Kubernetes Client - Runtime - Internal</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-kubernetes-client-internal</artifactId>
+            <version>2.4.2.Final</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-kubernetes-client-parent/quarkus-kubernetes-client-internal</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SLF4J API Module</name>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+            <projectUrl>http://www.slf4j.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                    <url>http://www.opensource.org/licenses/mit-license.php</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SLF4J: JBoss Log Manager</name>
+            <groupId>org.jboss.slf4j</groupId>
+            <artifactId>slf4j-jboss-logmanager</artifactId>
+            <version>1.1.0.Final</version>
+            <projectUrl>http://www.jboss.org/slf4j-jboss-logmanager</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: Annotations</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-annotation</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-annotation</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: Classloader</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-classloader</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-classloader</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: Constraints</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-constraint</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-constraint</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: Expressions</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-expression</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-expression</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: Functions</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-function</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-function</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye Common: IO</name>
+            <groupId>io.smallrye.common</groupId>
+            <artifactId>smallrye-common-io</artifactId>
+            <version>1.6.0</version>
+            <projectUrl>http://smallrye.io/smallrye-common-io</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye: Common classes</name>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config-common</artifactId>
+            <version>2.5.1</version>
+            <projectUrl>http://smallrye.io/smallrye-config-common</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye: MicroProfile Config CDI Implementation</name>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config</artifactId>
+            <version>2.5.1</version>
+            <projectUrl>http://smallrye.io/smallrye-config</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye: MicroProfile Config Core Implementation</name>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config-core</artifactId>
+            <version>2.5.1</version>
+            <projectUrl>http://smallrye.io/smallrye-config-core</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SmallRye: MicroProfile Config Source - Yaml</name>
+            <groupId>io.smallrye.config</groupId>
+            <artifactId>smallrye-config-source-yaml</artifactId>
+            <version>2.5.1</version>
+            <projectUrl>http://smallrye.io/smallrye-config-source-yaml</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>SnakeYAML</name>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.29</version>
+            <projectUrl>http://www.snakeyaml.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring AOP</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Beans</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Commons Logging Bridge</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jcl</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Context</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Core</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Expression Language (SpEL)</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>5.2.1.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Messaging</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Retry</name>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+            <version>1.2.5.RELEASE</version>
+            <projectUrl>https://www.springsource.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring Web</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Spring WebSocket</name>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <projectUrl>https://github.com/spring-projects/spring-framework</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>spring-security-core</name>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>5.2.1.RELEASE</version>
+            <projectUrl>http://spring.io/spring-security</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>spring-security-web</name>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>5.2.1.RELEASE</version>
+            <projectUrl>http://spring.io/spring-security</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>tomcat-annotations-api</name>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-annotations-api</artifactId>
+            <version>9.0.30</version>
+            <projectUrl>https://tomcat.apache.org/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>tomcat-embed-core</name>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.30</version>
+            <projectUrl>https://tomcat.apache.org/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>tomcat-embed-websocket</name>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>9.0.30</version>
+            <projectUrl>https://tomcat.apache.org/</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Vavr</name>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.3</version>
+            <projectUrl>http://vavr.io</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Vavr Match</name>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr-match</artifactId>
+            <version>0.10.3</version>
+            <projectUrl>http://vavr.io</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>wildfly-common</name>
+            <groupId>org.wildfly.common</groupId>
+            <artifactId>wildfly-common</artifactId>
+            <version>1.5.4.Final-format-001</version>
+            <projectUrl>http://www.jboss.org/wildfly-common</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://repository.jboss.org/licenses/apache-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>zjsonpatch</name>
+            <groupId>io.fabric8</groupId>
+            <artifactId>zjsonpatch</artifactId>
+            <version>0.3.0</version>
+            <projectUrl>https://github.com/fabric8io/zjsonpatch/</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
     </dependencies>
 </attributionReport>
