@@ -118,6 +118,19 @@
             </licenses>
         </dependency>
         <dependency>
+            <name>asyncutil</name>
+            <groupId>com.ibm.async</groupId>
+            <artifactId>asyncutil</artifactId>
+            <version>0.1.0</version>
+            <projectUrl>http://github.com/ibm/java-async-util</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
             <name>Automaton</name>
             <groupId>dk.brics.automaton</groupId>
             <artifactId>automaton</artifactId>
@@ -1044,6 +1057,19 @@
             </licenses>
         </dependency>
         <dependency>
+            <name>Jakarta Bean Validation API</name>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+            <projectUrl>https://beanvalidation.org</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
             <name>Jakarta CDI</name>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
@@ -1130,6 +1156,19 @@
             </licenses>
         </dependency>
         <dependency>
+            <name>JavaBeans Activation Framework</name>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>1.2.1</version>
+            <projectUrl>https://github.com/eclipse-ee4j/jaf/jakarta.activation</projectUrl>
+            <licenses>
+                <license>
+                    <name>EDL 1.0</name>
+                    <url>http://www.eclipse.org/org/documents/edl-v10.php</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
             <name>javax.annotation API</name>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -1208,6 +1247,23 @@
                 <license>
                     <name>Apache License 2.0</name>
                     <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>jboss-jakarta-jaxrs-api_spec</name>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+            <version>2.0.1.Final</version>
+            <projectUrl>http://www.jboss.org/jboss-jaxrs-api_2.1_spec</projectUrl>
+            <licenses>
+                <license>
+                    <name>EPL 2.0</name>
+                    <url>http://www.eclipse.org/legal/epl-2.0</url>
+                </license>
+                <license>
+                    <name>GPL2 w/ CPE</name>
+                    <url>https://www.gnu.org/software/classpath/license.html</url>
                 </license>
             </licenses>
         </dependency>
@@ -1866,6 +1922,45 @@
             </licenses>
         </dependency>
         <dependency>
+            <name>Quarkus - RESTEasy - Common - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-common</artifactId>
+            <version>2.5.0.CR1</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-resteasy-parent-aggregator/quarkus-resteasy-common-parent/quarkus-resteasy-common</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - RESTEasy - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy</artifactId>
+            <version>2.5.0.CR1</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-resteasy-parent-aggregator/quarkus-resteasy-parent/quarkus-resteasy</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>Quarkus - RESTEasy - Server common - Runtime</name>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-server-common</artifactId>
+            <version>2.5.0.CR1</version>
+            <projectUrl>https://github.com/quarkusio/quarkus/quarkus-build-parent/quarkus-extensions-parent/quarkus-resteasy-parent-aggregator/quarkus-resteasy-server-common-parent/quarkus-resteasy-server-common</projectUrl>
+            <licenses>
+                <license>
+                    <name>The Apache Software License, Version 2.0</name>
+                    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
             <name>Quarkus - Security - Runtime SPI</name>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-security-runtime-spi</artifactId>
@@ -1966,6 +2061,32 @@
                 <license>
                     <name>CC0</name>
                     <url>http://creativecommons.org/publicdomain/zero/1.0/</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>RESTEasy JAX-RS Core</name>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-core</artifactId>
+            <version>4.7.3.Final</version>
+            <projectUrl>https://jboss.org/resteasy/resteasy-core</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>https://repository.jboss.org/licenses/apache-2.0.txt</url>
+                </license>
+            </licenses>
+        </dependency>
+        <dependency>
+            <name>RESTEasy JAX-RS Core SPI</name>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-core-spi</artifactId>
+            <version>4.7.3.Final</version>
+            <projectUrl>https://jboss.org/resteasy/resteasy-core-spi</projectUrl>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                    <url>https://repository.jboss.org/licenses/apache-2.0.txt</url>
                 </license>
             </licenses>
         </dependency>
