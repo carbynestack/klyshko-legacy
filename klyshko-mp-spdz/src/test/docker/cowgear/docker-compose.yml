@@ -21,10 +21,9 @@ services:
       - KII_TUPLE_FILE=/etc/kii/tuples
     volumes:
       - ./data/party-1:/etc/kii
-    user: ${UID}
   party-2:
     image: carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-cowgear-offline
-    command: ["/bin/bash", "-c", "./kii-run.sh"]
+    command: [ "/bin/bash", "-c", "./kii-run.sh" ]
     ports:
       - "6001:5000"
     environment:
@@ -38,7 +37,6 @@ services:
       - KII_TUPLE_FILE=/etc/kii/tuples
     volumes:
       - ./data/party-2:/etc/kii
-    user: ${UID}
 networks:
   default:
     driver: bridge
