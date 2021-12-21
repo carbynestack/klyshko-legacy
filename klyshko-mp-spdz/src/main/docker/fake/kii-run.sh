@@ -63,13 +63,14 @@ do
 done
 
 prime=$(cat /etc/kii/params/prime)
+seed=$(echo -n ${KII_JOB_ID} | sha256sum | head -c 16)
 
 # Execute offline phase
 cmd=(
   "./Fake-Offline.x"
   "-d 0"
   "--prime ${prime}"
-  "--prngseed ${KII_JOB_ID}"
+  "--prngseed ${seed}"
   "${argsByType[${KII_TUPLE_TYPE}]}"
   "${KII_PLAYER_COUNT}"
 )
