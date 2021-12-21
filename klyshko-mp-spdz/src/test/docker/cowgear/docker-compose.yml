@@ -1,0 +1,47 @@
+#
+# Copyright (c) 2021 - for information on the respective copyright owner
+# see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+services:
+  party-1:
+    image: carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-cowgear-offline
+    command: ["/bin/bash", "-c", "./kii-run.sh"]
+    ports:
+      - "6000:5000"
+    environment:
+      - KII_JOB_ID=1b1cd019-444a-402d-847f-c0e58eff12f0
+      - KII_TUPLES_PER_JOB=100000
+      - KII_PLAYER_NUMBER=0
+      - KII_PLAYER_COUNT=2
+      - KII_TUPLE_TYPE=multiplicationtriple_gfp
+      - KII_LOCAL_PORT=5000
+      - KII_ENDPOINTS_FILE=/etc/kii/endpoints
+      - KII_TUPLE_FILE=/etc/kii/tuples
+    volumes:
+      - ./data/party-1:/etc/kii
+    user: ${UID}
+  party-2:
+    image: carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-cowgear-offline
+    command: ["/bin/bash", "-c", "./kii-run.sh"]
+    ports:
+      - "6001:5000"
+    environment:
+      - KII_JOB_ID=1b1cd019-444a-402d-847f-c0e58eff12f0
+      - KII_TUPLES_PER_JOB=100000
+      - KII_PLAYER_NUMBER=1
+      - KII_PLAYER_COUNT=2
+      - KII_TUPLE_TYPE=multiplicationtriple_gfp
+      - KII_LOCAL_PORT=5000
+      - KII_ENDPOINTS_FILE=/etc/kii/endpoints
+      - KII_TUPLE_FILE=/etc/kii/tuples
+    volumes:
+      - ./data/party-2:/etc/kii
+    user: ${UID}
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.57.0/24

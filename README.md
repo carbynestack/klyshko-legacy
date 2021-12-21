@@ -59,6 +59,8 @@ the tuple generation and provisioning process.
   - `inversetuple_gfp`, `inversetuple_gf2n`
   - `squaretuple_gfp`, `squaretuple_gf2n`
   - `multiplicationtriple_gfp`, `multiplicationtriple_gf2n`
+- `KII_LOCAL_PORT`: The network port the local CRG listens on.
+- `KII_ENDPOINTS_FILE`: The path to the network endpoint file (see below).
 
 #### Output
 
@@ -73,3 +75,11 @@ The prime to be used for generating prime field tuples is provided in the file
 
 The MAC key shares for prime and binary fields are made available as files
 `mac_key_share_p` and `mac_key_share_2` in folder `/etc/kii/secret-params`.
+
+### Endpoints
+
+The endpoints of all CRGs are provided in file at the location specified by
+`KII_ENDPOINTS_FILE`. The file consists of `KII_PLAYER_COUNT` lines following
+the syntax`<IP>:<PORT>` where line `i` in `[0, KII_PLAYER_NUMBER-1]` denotes the
+IP address `IP` and the port `PORT` the party with player number
+`KII_PLAYER_NUMBER` is listening on.

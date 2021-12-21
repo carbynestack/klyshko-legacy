@@ -25,9 +25,27 @@
                 <configuration>
                     <images>
                         <image>
+                            <name>carbynestack/klyshko-mp-spdz:${project.version}-mp-spdz-base</name>
+                            <build>
+                                <contextDir>base</contextDir>
+                            </build>
+                        </image>
+                        <image>
                             <name>carbynestack/klyshko-mp-spdz:${project.version}-fake-offline</name>
                             <build>
-                                <dockerFile>Dockerfile.fake-offline</dockerFile>
+                                <contextDir>fake</contextDir>
+                                <args>
+                                    <PROJECT_VERSION>${project.version}</PROJECT_VERSION>
+                                </args>
+                            </build>
+                        </image>
+                        <image>
+                            <name>carbynestack/klyshko-mp-spdz:${project.version}-cowgear-offline</name>
+                            <build>
+                                <contextDir>cowgear</contextDir>
+                                <args>
+                                    <PROJECT_VERSION>${project.version}</PROJECT_VERSION>
+                                </args>
                             </build>
                         </image>
                     </images>

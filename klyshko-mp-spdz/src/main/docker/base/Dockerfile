@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
     libboost-dev \
+    libboost-filesystem-dev \
     libboost-thread-dev \
     libntl-dev \
     libsodium-dev \
@@ -32,14 +33,6 @@ ARG MP_SPDZ_REPO="https://github.com/carbynestack/MP-SPDZ"
 ARG MP_SPDZ_VERSION="add-prng-seed-option"
 
 # Checkout MP-SPDZ repository at required version
-RUN git clone --recurse-submodules ${MP_SPDZ_REPO} mp-spdz-${MP_SPDZ_VERSION}
-WORKDIR mp-spdz-${MP_SPDZ_VERSION}
+RUN git clone --recurse-submodules ${MP_SPDZ_REPO} mp-spdz
+WORKDIR mp-spdz
 RUN git checkout ${MP_SPDZ_VERSION}
-
-# Build fake offline phase executable
-RUN echo "MY_CFLAGS += -DINSECURE" >> CONFIG.mine
-RUN make -j 8 tldr
-RUN make -j 8 Fake-Offline.x
-
-# Copy resources
-COPY kii-run.sh .

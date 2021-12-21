@@ -10,19 +10,18 @@
 set -e
 
 # Setup offline executable command line arguments dictionary
-n=${KII_TUPLES_PER_JOB}
 pn=${KII_PLAYER_NUMBER}
 declare -A argsByType=(
-  ["bit_gfp"]="--nbits 0,${n}"
-  ["bit_gf2n"]="--nbits ${n},0"
-  ["inputmask_gfp"]="--ntriples 0,${n}"
-  ["inputmask_gf2n"]="--ntriples ${n},0"
-  ["inversetuple_gfp"]="--ninverses ${n}"
-  ["inversetuple_gf2n"]="--ninverses ${n}"
-  ["squaretuple_gfp"]="--nsquares 0,${n}"
-  ["squaretuple_gf2n"]="--nsquares ${n},0"
-  ["multiplicationtriple_gfp"]="--ntriples 0,${n}"
-  ["multiplicationtriple_gf2n"]="--ntriples ${n},0"
+  ["bit_gfp"]="--tuple-type bits --field gfp"
+  ["bit_gf2n"]="--tuple-type bits --field gf2n"
+  ["inputmask_gfp"]="--tuple-type triples --field gfp"
+  ["inputmask_gf2n"]="--tuple-type triples --field gf2n"
+  ["inversetuple_gfp"]="--tuple-type inverses --field gfp"
+  ["inversetuple_gf2n"]="--tuple-type inverses --field gf2n"
+  ["squaretuple_gfp"]="--tuple-type squares --field gfp"
+  ["squaretuple_gf2n"]="--tuple-type squares --field gf2n"
+  ["multiplicationtriple_gfp"]="--tuple-type triples --field gfp"
+  ["multiplicationtriple_gf2n"]="--tuple-type triples --field gf2n"
 )
 declare -A folderByType=(
   ["bit_gfp"]="2-p-128/Bits-p-P${pn}"
@@ -38,7 +37,6 @@ declare -A folderByType=(
 )
 
 # Provide required parameters in MP-SPDZ "Player-Data" folder
-prime=$(cat /etc/kii/params/prime)
 declare fields=("p" "2")
 for f in "${fields[@]}"
 do
@@ -51,21 +49,27 @@ do
   for pn in $(seq 0 $((KII_PLAYER_COUNT-1)))
   do
     macKeyShareFile="${folder}/Player-MAC-Keys-${f}-P${pn}"
-    if [[ ${pn} -eq ${KII_PLAYER_NUMBER} ]]; then
-      src="/etc/kii/secret-params"
-    else
-      src="/etc/kii/extra-params"
-    fi
-    macKeyShare=$(cat "${src}/mac_key_share_${f}")
+    macKeyShare=$(cat "/etc/kii/secret-params/mac_key_share_${f}")
     echo "${KII_PLAYER_COUNT} ${macKeyShare}" > "${macKeyShareFile}"
     echo "MAC key share for player ${pn} written to ${macKeyShareFile}"
   done
 
 done
 
+prime=$(cat /etc/kii/params/prime)
+
 # Execute offline phase
-cmd="./Fake-Offline.x -d 0 --prime ${prime} --prngseed ${KII_JOB_ID} ${argsByType[${KII_TUPLE_TYPE}]} ${KII_PLAYER_COUNT}"
-eval "$cmd"
+cmd=(
+  "./klyshko-cowgear-offline.x"
+  "--prime ${prime}"
+  "--nparties ${KII_PLAYER_COUNT}"
+  "--player ${KII_PLAYER_NUMBER}"
+  "--port ${KII_LOCAL_PORT}"
+  "--player-file ${KII_ENDPOINTS_FILE}"
+  "--tuple-count ${KII_TUPLES_PER_JOB}"
+  "${argsByType[${KII_TUPLE_TYPE}]}"
+)
+eval "${cmd[@]}"
 
 # Copy generated tuples to path expected by KII
 cp "Player-Data/${folderByType[${KII_TUPLE_TYPE}]}" "${KII_TUPLE_FILE}"

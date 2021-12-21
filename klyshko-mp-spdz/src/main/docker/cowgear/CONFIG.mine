@@ -1,0 +1,11 @@
+#
+# Copyright (c) 2021 - for information on the respective copyright owner
+# see the NOTICE file and/or the repository https://github.com/carbynestack/klyshko.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+USE_NTL = 1
+
+# DO NOT REMOVE THE ADDITIONAL SPACE AT THE END OF FOLLOWING LINES
+MY_LDLIBS = -lboost_system -lboost_filesystem 
+MY_CFLAGS = -DNO_MIXED_CIRCUITS 

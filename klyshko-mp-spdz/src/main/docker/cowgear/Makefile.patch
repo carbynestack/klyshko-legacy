@@ -1,0 +1,1 @@
+klyshko-cowgear-offline.x: $(BOOST) $(VM) $(FHEOFFLINE)
