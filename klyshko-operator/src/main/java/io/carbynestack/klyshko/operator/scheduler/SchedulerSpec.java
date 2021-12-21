@@ -12,4 +12,5 @@ public record SchedulerSpec(
     int lowerThreshold,
     int upperThreshold,
     int tuplesPerJob,
-    String etcdEndpoint) {}
+    String etcdEndpoint,
+    String image) {}

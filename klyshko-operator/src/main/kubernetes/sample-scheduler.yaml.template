@@ -11,7 +11,9 @@ metadata:
 spec:
   master: ROLE
   parallelism: 1
-  lowerThreshold: 2000000
-  upperThreshold: 3000000
+  lowerThreshold: 4000000
+  upperThreshold: 4000000
   tuplesPerJob: 10000
   etcdEndpoint: 172.18.1.129
+  image: carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-fake-offline
+# image: carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-cowgear-offline

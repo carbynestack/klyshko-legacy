@@ -187,7 +187,7 @@ class VcpJobManager implements io.etcd.jetcd.Watch.Listener, Watcher<Pod>, Close
         .withRestartPolicy("Never")
         .addNewContainer()
         .withName("generator")
-        .withImage("carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-fake-offline") // TODO: Get from CRD
+        .withImage(scheduler.getSpec().image())
         .withEnv(
             new EnvVarBuilder().withName("KII_JOB_ID").withValue(key.jobId().toString()).build(),
             new EnvVarBuilder()

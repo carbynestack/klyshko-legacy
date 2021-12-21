@@ -39,6 +39,7 @@ do
    echo -e "${GREEN}Loading docker images into $c${NC}"
    kind load docker-image carbynestack/klyshko-provisioner:0.1-SNAPSHOT --name "$c"
    kind load docker-image carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-fake-offline --name "$c"
+   kind load docker-image carbynestack/klyshko-mp-spdz:0.1-SNAPSHOT-cowgear-offline --name "$c"
    kind load docker-image carbynestack/klyshko-operator:0.1-SNAPSHOT --name "$c"
 done
 
